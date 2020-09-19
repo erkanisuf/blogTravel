@@ -1,25 +1,31 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import { BlogProvider } from "./components/Context/BlogContext";
+import "./App.css";
+import Main from "./components/Context/Main";
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+  useParams,
+} from "react-router-dom";
+import Layout from "./Layout";
+import PostDetail from "./components/Context/PostDetail";
+import CreatePost from "./components/Context/CreatePost";
+import Login from "./components/Context/Login";
+import Detail from "./components/Context/Detail";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <BlogProvider>
+      <h1>Blog App</h1>
+      <Layout>
+        <Routes>
+          <Route path="/" element={<Main />} />
+          <Route path="detail/:id" element={<Detail />} />
+          <Route path="login/" element={<Login />} />
+        </Routes>
+      </Layout>
+    </BlogProvider>
   );
 }
 

@@ -1,0 +1,148 @@
+@import url("https://fonts.googleapis.com/css2?family=PT+Sans+Narrow&display=swap");
+.MainContainer {
+  background-color: white;
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 1fr 1fr 1fr;
+      grid-template-columns: 1fr 1fr 1fr;
+  grid-auto-rows: 300px;
+  gap: 25px;
+  width: 90%;
+  margin: 25px auto;
+  font-family: "PT Sans Narrow", sans-serif;
+}
+
+.MainContainer .btnopen {
+  background-color: orange;
+}
+
+.MainContainer .btnclosed {
+  background-color: red;
+  pointer-events: none;
+}
+
+.MainContainer div {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  margin: 0;
+  padding: 0;
+  background-color: white;
+  width: 100%;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  -webkit-transition: all 0.5s ease-in-out;
+  transition: all 0.5s ease-in-out;
+}
+
+.MainContainer div:hover {
+  -webkit-transform: scale(1.01);
+          transform: scale(1.01);
+}
+
+.MainContainer .insides {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  margin: 0;
+  padding: 0;
+  background-color: rgba(255, 249, 249, 0.815);
+  width: 100%;
+  line-height: 15px;
+  border-top: 1px solid black;
+}
+
+.MainContainer h1 {
+  color: black;
+  padding: 0 25px;
+}
+
+.MainContainer h5 {
+  color: black;
+  font-style: italic;
+  padding: 0 25px;
+}
+
+.MainContainer div:nth-child(1) {
+  -ms-grid-column: 1;
+  -ms-grid-column-span: 1;
+  grid-column: 1 /2;
+  -ms-grid-row: 1;
+  -ms-grid-row-span: 2;
+  grid-row: 1/ 3;
+  overflow: hidden;
+  background-size: cover !important;
+}
+
+.MainContainer div:nth-child(1):hover {
+  -webkit-transform: scale(1.01);
+          transform: scale(1.01);
+}
+
+.MainContainer div:nth-child(1) .insides {
+  background-color: rgba(233, 188, 90, 0.651);
+}
+
+.isOpenbtn {
+  margin: 25px auto;
+  display: block;
+  font-family: "PT Sans Narrow", sans-serif;
+  border: none;
+  background-color: white;
+  font-size: 12px;
+}
+
+.isOpenbtn:hover {
+  outline: none;
+  border: none;
+}
+
+.isOpenbtn:focus {
+  outline: none;
+  border: none;
+}
+
+.dropDWN {
+  color: #3f3d3d;
+  cursor: pointer;
+  display: block;
+  height: 35px;
+  width: 35px;
+  border-radius: 50%;
+  border: 1px solid #8f8f8f;
+  margin: 5px auto;
+}
+
+.dropDWN:hover {
+  background-color: #d3d2d2;
+}
+
+.dropDWNP {
+  height: 15px;
+  text-align: center;
+  margin: 25px auto;
+  margin-top: -25px;
+  font-family: "PT Sans Narrow", sans-serif;
+}
+/*# sourceMappingURL=Main.css.map */

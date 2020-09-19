@@ -1,0 +1,57 @@
+@import url("https://fonts.googleapis.com/css2?family=PT+Sans+Narrow&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap");
+
+$grey: rgba(133, 133, 133, 0.5);
+.containerPostDetail {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  margin: 0 auto;
+  font-family: "PT Sans Narrow", sans-serif;
+
+  .titleheader {
+    width: 80%;
+    padding: 25px;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    margin: 25px auto;
+    border-bottom: 1px solid $grey;
+    img {
+      height: auto;
+      max-width: 40%;
+      display: block;
+      margin: auto;
+      object-fit: cover;
+    }
+  }
+
+  .themaintext {
+    width: 80%;
+    margin: 0 auto;
+    text-align: justify;
+    font-size: 22px;
+    font-family: "Roboto", sans-serif;
+
+    img {
+      max-width: 100%;
+      float: right;
+      margin: 10px;
+    }
+  }
+
+  .btnandcomment {
+    background-color: rgb(216, 119, 192);
+  }
+  .btnopen {
+    background-color: green;
+  }
+  .btnclosed {
+    background-color: red;
+  }
+  .btnnotlogged {
+    background-color: rgb(47, 78, 255);
+  }
+}

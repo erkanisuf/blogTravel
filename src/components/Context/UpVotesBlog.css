@@ -1,0 +1,60 @@
+@import url("https://fonts.googleapis.com/css2?family=PT+Sans+Narrow&display=swap");
+.upvoteItems {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  border-top-right-radius: 2px;
+  border-top-left-radius: 2px;
+  border-top: 1px solid rgb(223, 218, 218);
+  width: 350px;
+  height: 250px;
+  margin: 10px;
+  background-repeat: no-repeat;
+  background-position: center;
+
+  background-size: cover;
+  background-color: rgba(133, 133, 133, 0.5);
+  background-blend-mode: multiply;
+}
+.upvoteItems:hover {
+  background-blend-mode: normal;
+}
+
+.upvoteItems .userHeart {
+  background-color: rgb(252, 252, 252);
+  margin: 0;
+  padding: 5px;
+  color: grey;
+  font-size: 12px;
+  font-style: italic;
+  width: 100%;
+  text-align: start;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+
+.upvoteItems h1 {
+  background-color: rgba(255, 249, 249, 0.596);
+  margin: 0;
+  text-align: end;
+  padding: 5px;
+  color: black;
+}
+
+.upvoteContainer {
+  width: 90%;
+  margin: 0 auto;
+  font-family: "PT Sans Narrow", sans-serif;
+}
+
+.upvoteContainer button {
+  margin: 5px;
+}
+
+.global-class-name {
+  color: rgb(63, 61, 61);
+  font-size: 55px;
+  cursor: pointer;
+}

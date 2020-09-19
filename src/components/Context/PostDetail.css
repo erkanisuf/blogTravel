@@ -1,0 +1,77 @@
+@import url("https://fonts.googleapis.com/css2?family=PT+Sans+Narrow&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap");
+.containerPostDetail {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  margin: 0 auto;
+  font-family: "PT Sans Narrow", sans-serif;
+}
+
+.containerPostDetail .titleheader {
+  width: 80%;
+  padding: 25px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin: 25px auto;
+  border-bottom: 1px solid rgba(133, 133, 133, 0.5);
+}
+
+.containerPostDetail .titleheader img {
+  height: auto;
+  max-width: 40%;
+  display: block;
+  margin: auto;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+
+.containerPostDetail .themaintext {
+  width: 80%;
+  margin: 0 auto;
+  text-align: justify;
+  font-size: 22px;
+  font-family: "Roboto", sans-serif;
+}
+
+.containerPostDetail .themaintext img {
+  max-width: 100%;
+  float: right;
+  margin: 10px;
+}
+
+.containerPostDetail .btnandcomment {
+  background-color: #d877c0;
+}
+
+.containerPostDetail .btnopen {
+  background-color: green;
+}
+
+.containerPostDetail .btnclosed {
+  background-color: red;
+}
+
+.containerPostDetail .btnnotlogged {
+  background-color: #2f4eff;
+}
+/*# sourceMappingURL=PostDetail.css.map */
