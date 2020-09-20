@@ -1,0 +1,231 @@
+.containerMain {
+  min-height: 800px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin-top: -200px;
+}
+
+.imageContLogin {
+  background-color: #fff;
+  border-radius: 5px;
+  padding-right: 200px;
+  position: relative;
+  overflow: hidden;
+  width: 500px;
+  margin: 0 auto;
+  background-color: #ffffff;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -ms-flex-line-pack: center;
+      align-content: center;
+  align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  height: 100%;
+  text-align: center;
+  background: -webkit-gradient(linear, left top, left bottom, from(rgba(253, 253, 253, 0.301)), to(white)), url("../../images/1_5lpiSFo6j5dhrr6Z6RFd8Q.jpeg");
+  background: linear-gradient(to bottom, rgba(253, 253, 253, 0.301), white), url("../../images/1_5lpiSFo6j5dhrr6Z6RFd8Q.jpeg");
+  background-position: center;
+  /* Center the image */
+  background-repeat: no-repeat;
+  /* Do not repeat the image */
+  background-size: cover;
+}
+
+.containerLogin {
+  background-color: #fff;
+  padding: 55px;
+  padding-bottom: 100px;
+  position: relative;
+  overflow: hidden;
+  width: 300px;
+  margin: 0 auto;
+  background-color: #ffffff;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -ms-flex-line-pack: center;
+      align-content: center;
+  align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  height: 100%;
+  text-align: center;
+}
+
+.containerLogin .emaildLabel {
+  margin: 0 auto;
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
+  position: absolute;
+  pointer-events: none;
+  top: 65px;
+}
+
+.containerLogin .passwordLabel {
+  margin: 0 auto;
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
+  position: absolute;
+  pointer-events: none;
+  top: 135px;
+}
+
+.containerLogin input:nth-of-type(1) {
+  width: 50%;
+  background: transparent;
+  padding: 10px 0;
+  font-size: 16px;
+  color: black;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  margin: 0 auto;
+  margin-bottom: 30px;
+  border: none;
+  border-bottom: 1px solid black;
+  outline: none;
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
+}
+
+.containerLogin input:nth-of-type(1):focus {
+  border-bottom: 1px solid #538d22;
+}
+
+.containerLogin input:nth-of-type(1):focus + .emaildLabel {
+  margin-top: -25px;
+}
+
+.containerLogin input:nth-of-type(2) {
+  width: 50%;
+  background: transparent;
+  padding: 10px 0;
+  font-size: 16px;
+  color: black;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  margin: 0 auto;
+  margin-bottom: 30px;
+  border: none;
+  border-bottom: 1px solid black;
+  outline: none;
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
+}
+
+.containerLogin input:nth-of-type(2):focus {
+  border-bottom: 1px solid #538d22;
+}
+
+.containerLogin input:nth-of-type(2):focus + .passwordLabel {
+  margin-top: -25px;
+}
+
+.containerLogin .buttonsLogin {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  width: 100%;
+}
+
+.containerLogin .buttonsLogin p {
+  cursor: pointer;
+}
+
+.containerLogin .loginbtn {
+  border-top-left-radius: 20px;
+  border-bottom-left-radius: 20px;
+  border: none;
+  padding: 15px;
+  outline: none;
+  margin-right: 2px;
+  background-color: #538d22;
+  color: #ffffff;
+  font-size: 12px;
+  font-weight: bold;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
+  cursor: pointer;
+}
+
+.containerLogin .loginbtn:active {
+  -webkit-transform: scale(0.95);
+          transform: scale(0.95);
+}
+
+.containerLogin .loginbtn:focus {
+  outline: none;
+}
+
+.containerLogin .loginbtn:hover {
+  background-color: #67b427;
+}
+
+.containerLogin .regbtn {
+  border-top-right-radius: 20px;
+  border-bottom-right-radius: 20px;
+  border: none;
+  padding: 15px;
+  margin-left: 2px;
+  background-color: #ce4257;
+  color: #ffffff;
+  font-size: 12px;
+  font-weight: bold;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
+  cursor: pointer;
+}
+
+.containerLogin .regbtn:active {
+  -webkit-transform: scale(0.95);
+          transform: scale(0.95);
+}
+
+.containerLogin .regbtn:focus {
+  outline: none;
+}
+
+.containerLogin .regbtn:hover {
+  background-color: #fc788c;
+}
+/*# sourceMappingURL=Login.css.map */
