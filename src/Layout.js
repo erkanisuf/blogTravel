@@ -23,6 +23,7 @@ function Layout(props) {
   };
   return (
     <div>
+      <h2>ok</h2>
       <div>
         {loggedIn ? (
           <p onClick={signOut}>Sign Out</p>
