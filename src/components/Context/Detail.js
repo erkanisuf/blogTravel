@@ -99,7 +99,6 @@ const Detail = () => {
         </div>
         <div className="commentbox" id={`${patka.id}`} />
       </div>
-      ))
     </>
   );
 };

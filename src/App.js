@@ -17,7 +17,6 @@ import Detail from "./components/Context/Detail";
 function App() {
   return (
     <BlogProvider>
-      <h1>Blog App</h1>
       <Layout>
         <Routes>
           <Route path="/" element={<Main />} />

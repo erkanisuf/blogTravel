@@ -1,15 +1,17 @@
 import React, { useContext } from "react";
-import UpVotesBlog from "./components/Context/UpVotesBlog";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { BlogContext } from "./components/Context/BlogContext";
 import { auth } from "./firebase/firebase";
-import { useNavigate } from "react-router-dom";
-import Main from "./components/Context/Main";
-import PostDetail from "./components/Context/PostDetail";
+
+import UpVotesBlog from "./components/Context/UpVotesBlog";
+import "./Layout.css";
+
+import { GiEarthAfricaEurope } from "react-icons/gi";
+import { FaUser } from "react-icons/fa";
+import { ImExit } from "react-icons/im";
 
 function Layout(props) {
-  const { valueOne, valueTwo, valueThree } = useContext(BlogContext);
-  const [blogs] = valueOne;
+  const { valueTwo, valueThree } = useContext(BlogContext);
   const [loggedIn, setloggedIn] = valueTwo;
   const [userId, setuserId] = valueThree;
   const navigate = useNavigate();
@@ -23,21 +25,46 @@ function Layout(props) {
   };
   return (
     <div>
-      <div>
-        {loggedIn ? (
-          <p onClick={signOut}>Sign Out</p>
-        ) : (
-          <Link to={!loggedIn && "login/"}>
-            {" "}
-            <p>register/login</p>
-          </Link>
-        )}
+      <div className="logoBar">
+        <span>
+          <GiEarthAfricaEurope />
+        </span>
+        <h1>Travel Blog</h1>
       </div>
 
-      <h1>THIS IS LAYOUT</h1>
+      <div className="themainbodyContainer">
+        <div className="headerBar">
+          <nav className="navBar">
+            <ul>
+              <li>Home</li>
+              <li>Posts</li>
+              <li>Create Posts</li>
+              <li>Filter</li>
+            </ul>
+          </nav>
 
-      {props.children}
-      <UpVotesBlog />
+          <span className="loginBar">
+            {loggedIn ? (
+              <p onClick={signOut}>
+                <ImExit /> Sign Out
+              </p>
+            ) : (
+              <Link
+                to={!loggedIn && "login/"}
+                style={{ textDecoration: "none", color: "black" }}
+              >
+                {" "}
+                <p>
+                  <FaUser />
+                  {"  "}register/login
+                </p>
+              </Link>
+            )}
+          </span>
+        </div>
+        {props.children}
+        <UpVotesBlog />
+      </div>
     </div>
   );
 }
