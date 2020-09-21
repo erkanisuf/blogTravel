@@ -1,3 +1,4 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@300&family=Pacifico&display=swap");
 .containerMain {
   min-height: 800px;
   display: -webkit-box;
@@ -7,6 +8,7 @@
       -ms-flex-align: center;
           align-items: center;
   margin-top: -200px;
+  font-family: "Montserrat", sans-serif;
 }
 
 .imageContLogin {
@@ -81,6 +83,7 @@
   position: absolute;
   pointer-events: none;
   top: 65px;
+  right: 85px;
 }
 
 .containerLogin .passwordLabel {
@@ -90,10 +93,11 @@
   position: absolute;
   pointer-events: none;
   top: 135px;
+  right: 85px;
 }
 
 .containerLogin input:nth-of-type(1) {
-  width: 50%;
+  width: 80%;
   background: transparent;
   padding: 10px 0;
   font-size: 16px;
@@ -119,10 +123,11 @@
 
 .containerLogin input:nth-of-type(1):focus + .emaildLabel {
   margin-top: -25px;
+  right: 50%;
 }
 
 .containerLogin input:nth-of-type(2) {
-  width: 50%;
+  width: 80%;
   background: transparent;
   padding: 10px 0;
   font-size: 16px;
@@ -148,6 +153,7 @@
 
 .containerLogin input:nth-of-type(2):focus + .passwordLabel {
   margin-top: -25px;
+  right: 50%;
 }
 
 .containerLogin .buttonsLogin {
