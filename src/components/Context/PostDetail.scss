@@ -3,47 +3,72 @@
 
 $grey: rgba(133, 133, 133, 0.5);
 .containerPostDetail {
-  width: 100%;
-
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
+  width: 80%;
   margin: 0 auto;
+  display: grid;
+  gap: 15px;
+  grid-template-columns: repeat(3, 1fr);
   font-family: "PT Sans Narrow", sans-serif;
 
   .titleheader {
-    width: 80%;
-    padding: 25px;
-    display: flex;
-    justify-content: center;
-    flex-direction: column;
-    align-items: center;
-    margin: 25px auto;
+    grid-column: 1/4;
+    grid-row: 1/2;
     border-bottom: 1px solid $grey;
+    h1 {
+      margin: 0;
+      margin-top: 25px;
+      font-size: 35px;
+      text-align: center;
+      margin-bottom: 5px;
+    }
+    span {
+      margin: 0;
+      font-weight: bold;
+      font-style: italic;
+      padding: 2px 15px;
+      text-align: left;
+      font-size: 15px;
+    }
+    span:nth-of-type(2) {
+      margin: 0;
+      float: right;
+    }
+
+    margin-bottom: 15px;
+  }
+
+  .imgheader {
+    grid-column: 1/2;
+    grid-row: 2/3;
+    width: 100%;
+
     img {
-      height: auto;
-      max-width: 40%;
-      display: block;
-      margin: auto;
-      object-fit: cover;
+      width: 100%;
+      max-height: 800px;
+      object-fit: contain;
     }
   }
 
   .themaintext {
-    width: 80%;
+    grid-column: 2/4;
+    grid-row: 2/4;
+    width: 100%;
     margin: 0 auto;
     text-align: justify;
     font-size: 22px;
     font-family: "Roboto", sans-serif;
+    border-bottom: 1px solid $grey;
 
     img {
-      max-width: 100%;
-      float: right;
-      margin: 10px;
+      width: 100%;
+      max-height: 300px;
+      object-fit: contain;
     }
   }
 
   .btnandcomment {
+    grid-column: 1/4;
+    grid-row: 4 / auto;
     background-color: rgb(216, 119, 192);
   }
   .btnopen {

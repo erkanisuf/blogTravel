@@ -5,6 +5,7 @@ import "./PostDetail.css";
 import { ImHeart } from "react-icons/im";
 import { db } from "../../firebase/firebase";
 import { Link } from "react-router-dom";
+import { FaUser } from "react-icons/fa";
 
 const Detail = () => {
   const { state } = useLocation();
@@ -69,13 +70,16 @@ const Detail = () => {
 
   return (
     <>
-      <Link to={"/"}>
-        <button>GO BACK</button>
-      </Link>
       <div className="containerPostDetail">
         <div className="titleheader">
           <h1>{patka.title}</h1>
-          <h5>{patka.name}</h5>
+          <span>
+            <FaUser /> {"  "}
+            {patka.name}
+          </span>
+          <span> Date: 21.10.2020</span>
+        </div>
+        <div className="imgheader">
           <img src={patka.image} alt={patka.name} />
         </div>
 
@@ -96,8 +100,8 @@ const Detail = () => {
           ) : (
             "Log in to Vote"
           )}
+          <div className="commentbox" id={`${patka.id}`} />
         </div>
-        <div className="commentbox" id={`${patka.id}`} />
       </div>
     </>
   );
