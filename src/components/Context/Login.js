@@ -33,7 +33,7 @@ const Login = () => {
           navigate("/");
         }
       })
-      .catch((err) => console.log("login err", err));
+      .catch((err) => seterrorMsg(err));
   };
 
   const signOut = (e) => {

@@ -2,10 +2,16 @@ import React, { useContext, useState, useEffect } from "react";
 import { useLocation, useNavigate, useParams } from "react-router-dom";
 import { BlogContext } from "./BlogContext";
 import "./PostDetail.css";
-import { ImHeart } from "react-icons/im";
+import { AiFillHeart } from "react-icons/ai";
+import { AiOutlineHeart } from "react-icons/ai";
+import { FaRegComment } from "react-icons/fa";
+
 import { db } from "../../firebase/firebase";
 import { Link } from "react-router-dom";
 import { FaUser } from "react-icons/fa";
+
+import Comment from "./Comment";
+import Moment from "react-moment";
 
 const Detail = () => {
   const { state } = useLocation();
@@ -23,11 +29,13 @@ const Detail = () => {
   const [useremail] = valueFour;
   const [loggedIn] = valueTwo;
   const [btnFill, setBtnFill] = useState(null);
+  const [logErr, setLogErr] = useState("");
+  const [commentShow, setcommentShow] = useState(false);
+  console.log(commentShow);
 
   useEffect(() => {
-    const commentBox = require("commentbox.io");
-    commentBox("5667082964303872-proj");
-  }, []);
+    setLogErr("");
+  }, [patka]);
 
   const filltheButton = () => {
     if (patka.likes.find((el) => el === useremail)) {
@@ -49,7 +57,7 @@ const Detail = () => {
       const pushArray = copyArrPost.likes;
 
       if (copyArrPost.likes.find((el) => el === useremail)) {
-        alert("same cant upvote anymore bich");
+        setLogErr("You can vote only once.");
         setBtnFill(false);
         return false;
       } else {
@@ -58,7 +66,7 @@ const Detail = () => {
         writeUserData(patka.id, pushArray);
       }
     } else {
-      alert("only registered can vote");
+      setLogErr("Only registered can vote");
     }
   };
 
@@ -67,6 +75,7 @@ const Detail = () => {
       likes: sendObj,
     });
   }
+  console.log(patka.date);
 
   return (
     <>
@@ -77,7 +86,10 @@ const Detail = () => {
             <FaUser /> {"  "}
             {patka.name}
           </span>
-          <span> Date: 21.10.2020</span>
+          <span>
+            <Moment format="YYYY/MM/DD">{patka.date}</Moment>
+          </span>
+          <span>{patka.useremail}</span>
         </div>
         <div className="imgheader">
           <img src={patka.image} alt={patka.name} />
@@ -89,18 +101,64 @@ const Detail = () => {
         ></div>
 
         <div className="btnandcomment">
-          <p>{patka.likes.length}</p>
           {loggedIn ? (
-            <button
-              className={btnFill ? "btnopen" : "btnclosed"}
-              onClick={upVotebtnPost}
-            >
-              <ImHeart />
-            </button>
+            <div>
+              <span
+                style={{
+                  float: "right",
+                  marginRight: "15px",
+                  fontSize: "15px",
+                }}
+              >
+                {patka.likes.length} Upvotes
+                <p style={{ color: "red" }}>{logErr}</p>
+              </span>
+              <span
+                className={btnFill ? "btnopen" : "btnclosed"}
+                onClick={upVotebtnPost}
+              >
+                {btnFill ? <AiOutlineHeart /> : <AiFillHeart />}
+              </span>
+            </div>
           ) : (
-            "Log in to Vote"
+            <div>
+              <span
+                style={{
+                  float: "right",
+                  marginRight: "15px",
+                  fontSize: "15px",
+                }}
+              >
+                {patka.likes.length} Upvotes
+                <p style={{ color: "red" }}>{logErr}</p>
+              </span>
+
+              <span
+                style={{
+                  float: "right",
+                  marginRight: "5px",
+                  fontSize: "25px",
+                  cursor: "pointer",
+                }}
+                onClick={() => setLogErr("Log in To Vote..")}
+              >
+                <AiOutlineHeart />
+              </span>
+            </div>
           )}
-          <div className="commentbox" id={`${patka.id}`} />
+          <span
+            style={{
+              float: "right",
+              marginRight: "10px",
+              fontSize: "22px",
+              cursor: "pointer",
+            }}
+            onClick={() => setcommentShow(!commentShow)}
+          >
+            <FaRegComment />
+          </span>
+
+          {commentShow && <Comment commentId={patka.id} />}
         </div>
       </div>
     </>

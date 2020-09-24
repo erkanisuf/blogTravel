@@ -28,7 +28,7 @@ export const BlogProvider = (props) => {
   }, []);
 
   useEffect(() => {
-    const unsub = db.collection("times").onSnapshot((snapshot) => {
+    const unsub = db.collection("blogpost").onSnapshot((snapshot) => {
       const allPost = snapshot.docs.map((doc) => ({
         id: doc.id,
         ...doc.data(),
