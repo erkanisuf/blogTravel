@@ -36,9 +36,17 @@ function Layout(props) {
         <div className="headerBar">
           <nav className="navBar">
             <ul>
-              <li>Home</li>
+              <Link to="/" style={{ textDecoration: "none", color: "black" }}>
+                Home
+              </Link>
+
               <li>Posts</li>
-              <li>Create Posts</li>
+              <Link
+                to={loggedIn ? "createpost/" : "login/"}
+                style={{ textDecoration: "none", color: "black" }}
+              >
+                Create Post
+              </Link>
               <li>Filter</li>
             </ul>
           </nav>

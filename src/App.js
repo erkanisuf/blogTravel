@@ -22,6 +22,7 @@ function App() {
           <Route path="/" element={<Main />} />
           <Route path="detail/:id" element={<Detail />} />
           <Route path="login/" element={<Login />} />
+          <Route path="createpost/" element={<CreatePost />} />
         </Routes>
       </Layout>
     </BlogProvider>
