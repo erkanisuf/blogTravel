@@ -9,20 +9,22 @@ import {
   useParams,
 } from "react-router-dom";
 import Layout from "./Layout";
-import PostDetail from "./components/Context/PostDetail";
+
 import CreatePost from "./components/Context/CreatePost";
 import Login from "./components/Context/Login";
 import Detail from "./components/Context/Detail";
+import AllPost from "./components/Context/AllPost";
 
 function App() {
   return (
     <BlogProvider>
-      <h1>Blog App</h1>
       <Layout>
         <Routes>
           <Route path="/" element={<Main />} />
           <Route path="detail/:id" element={<Detail />} />
           <Route path="login/" element={<Login />} />
+          <Route path="createpost/" element={<CreatePost />} />
+          <Route path="allpost/" element={<AllPost />} />
         </Routes>
       </Layout>
     </BlogProvider>

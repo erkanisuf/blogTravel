@@ -1,10 +1,11 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { auth } from "../../firebase/firebase";
-
+import "./Login.css";
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [errorMsg, seterrorMsg] = useState("");
   const navigate = useNavigate();
   console.log(email, password);
 
@@ -18,7 +19,7 @@ const Login = () => {
           navigate("/");
         }
       })
-      .catch((err) => console.log(err));
+      .catch((err) => seterrorMsg(err));
     console.log("error reg/");
   };
 
@@ -32,7 +33,7 @@ const Login = () => {
           navigate("/");
         }
       })
-      .catch((err) => console.log("login err", err));
+      .catch((err) => seterrorMsg(err));
   };
 
   const signOut = (e) => {
@@ -40,30 +41,40 @@ const Login = () => {
     auth.signOut();
   };
   return (
-    <div>
-      <form>
-        <p>email</p>
-        <input
-          type="text"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-        />
-        <p>password</p>
-        <input
-          type="text"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-        />
-        <button type="submit" onClick={login}>
-          Login
-        </button>
-        <button type="submit" onClick={register}>
-          Create Account
-        </button>
-        <button type="submit" onClick={signOut}>
-          Sign Out
-        </button>
-      </form>
+    <div className="containerMain">
+      <div className="imageContLogin">
+        <form className="containerLogin">
+          <input
+            type="text"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+          />
+          <label className="emaildLabel">email</label>
+
+          <input
+            type="password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+          />
+          <label className="passwordLabel">password</label>
+          {errorMsg && (
+            <span style={{ padding: "15px", color: "red" }}>
+              {errorMsg.message}
+            </span>
+          )}
+          <div className="buttonsLogin">
+            <button className="loginbtn" type="submit" onClick={login}>
+              Login
+            </button>
+            <button className="regbtn" type="submit" onClick={register}>
+              Create Account
+            </button>
+            {/* <button type="submit" onClick={signOut}>
+            Sign Out
+          </button> */}
+          </div>
+        </form>
+      </div>
     </div>
   );
 };

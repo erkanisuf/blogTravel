@@ -16,9 +16,11 @@ import { IconContext } from "react-icons";
 const UpVotesBlog = ({ link }) => {
   const { valueOne } = useContext(BlogContext);
   const [blogs] = valueOne;
-  const putka = [...blogs];
-  const rankblogs = putka.sort((a, b) => b.likes.length - a.likes.length);
-  console.log("putka", putka);
+  const upvotearrCop = [...blogs];
+  const rankblogs = upvotearrCop.sort(
+    (a, b) => b.likes.length - a.likes.length
+  );
+
   return (
     <div className="upvoteContainer">
       <Carousel

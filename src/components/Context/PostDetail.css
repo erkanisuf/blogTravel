@@ -1,77 +1,111 @@
 @import url("https://fonts.googleapis.com/css2?family=PT+Sans+Narrow&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap");
 .containerPostDetail {
-  width: 100%;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-  -ms-flex-direction: column;
-  flex-direction: column;
-  -webkit-box-pack: justify;
-  -ms-flex-pack: justify;
-  justify-content: space-between;
+  width: 80%;
   margin: 0 auto;
+  display: -ms-grid;
+  display: grid;
+  gap: 15px;
+  -ms-grid-columns: (1fr)[3];
+      grid-template-columns: repeat(3, 1fr);
   font-family: "PT Sans Narrow", sans-serif;
 }
 
 .containerPostDetail .titleheader {
-  width: 85%;
-  padding: 25px;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: center;
-  -ms-flex-pack: center;
-  justify-content: center;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-  -ms-flex-direction: column;
-  flex-direction: column;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  margin: 25px auto;
+  -ms-grid-column: 1;
+  -ms-grid-column-span: 3;
+  grid-column: 1/4;
+  -ms-grid-row: 1;
+  -ms-grid-row-span: 1;
+  grid-row: 1/2;
   border-bottom: 1px solid rgba(133, 133, 133, 0.5);
+  margin-bottom: 15px;
 }
 
-.containerPostDetail .titleheader img {
-  height: auto;
-  max-width: 40%;
-  display: block;
-  margin: auto;
-  -o-object-fit: cover;
-  object-fit: cover;
+.containerPostDetail .titleheader h1 {
+  margin: 0;
+  margin-top: 25px;
+  font-size: 35px;
+  text-align: center;
+  margin-bottom: 5px;
+}
+
+.containerPostDetail .titleheader span {
+  margin: 0;
+  font-weight: bold;
+  font-style: italic;
+  padding: 2px 15px;
+  text-align: left;
+  font-size: 15px;
+}
+
+.containerPostDetail .titleheader span:nth-of-type(2) {
+  margin: 0;
+  float: right;
+}
+
+.containerPostDetail .imgheader {
+  -ms-grid-column: 2;
+  -ms-grid-column-span: 1;
+  grid-column: 2/3;
+  -ms-grid-row: 2;
+  -ms-grid-row-span: 1;
+  grid-row: 2/3;
+  width: 100%;
+  padding-bottom: 25px;
+}
+
+.containerPostDetail .imgheader img {
+  width: 100%;
+  max-height: 800px;
+  -o-object-fit: contain;
+     object-fit: contain;
 }
 
 .containerPostDetail .themaintext {
-  width: 80%;
+  -ms-grid-column: 1;
+  -ms-grid-column-span: 3;
+  grid-column: 1/4;
+  -ms-grid-row: 3;
+  -ms-grid-row-span: 1;
+  grid-row: 3/4;
+  width: 100%;
   margin: 0 auto;
   text-align: justify;
   font-size: 22px;
   font-family: "Roboto", sans-serif;
+  border-bottom: 1px solid rgba(133, 133, 133, 0.5);
+  border-top: 1px solid rgba(133, 133, 133, 0.5);
 }
 
 .containerPostDetail .themaintext img {
-  max-width: 100%;
-  float: right;
-  margin: 10px;
+  width: 100%;
+  max-height: 300px;
+  -o-object-fit: contain;
+     object-fit: contain;
 }
 
 .containerPostDetail .btnandcomment {
-  background-color: #d877c0;
+  -ms-grid-column: 1;
+  -ms-grid-column-span: 3;
+  grid-column: 1/4;
+  grid-row: 4 / auto;
+  width: 100%;
+  margin: 0 auto;
 }
 
 .containerPostDetail .btnopen {
-  background-color: green;
+  float: right;
+  font-size: 25px;
+  cursor: pointer;
+  margin-right: 5px;
 }
 
 .containerPostDetail .btnclosed {
-  background-color: red;
-}
-
-.containerPostDetail .btnnotlogged {
-  background-color: #2f4eff;
+  float: right;
+  color: #8d2257;
+  font-size: 25px;
+  cursor: pointer;
+  margin-right: 5px;
 }
 /*# sourceMappingURL=PostDetail.css.map */

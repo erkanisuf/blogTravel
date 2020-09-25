@@ -1,15 +1,60 @@
-import React, { useState, useContext } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import { Editor } from "@tinymce/tinymce-react";
 import firebase from "firebase"; // add
 import { BlogContext } from "./BlogContext";
+import { storageFB } from "../../firebase/firebase";
+import "./CreatePost.css";
+import { motion } from "framer-motion";
+import { useNavigate } from "react-router-dom";
 
 const CreatePost = () => {
+  const { valueOne, valueFour } = useContext(BlogContext);
+  const [blogs] = valueOne;
+  const [useremail, setuserEmail] = valueFour;
+
+  //////////////////////////////////////////////
   const [valuetext, setValuetext] = useState("");
   const [valuetitle, setValuetitle] = useState("");
   const [valuename, setValuename] = useState("");
+  const [file, setFile] = useState(null);
+  const [fileErr, setFileErr] = useState(null);
+  const types = ["image/png", "image/jpeg"];
+  //////////////////////////////////////////////////
+  const [progress, setProgress] = useState(0);
+  const [error, setError] = useState(null);
+  const [url, setUrl] = useState(null);
 
-  const { valueOne } = useContext(BlogContext);
-  const [blogs] = valueOne;
+  const navigate = useNavigate();
+  console.log(url);
+  console.log(error);
+  console.log(progress);
+  console.log(file);
+
+  const uploadtoStorage = (file) => {
+    const storageRef = storageFB.ref(file.name);
+    storageRef.put(file).on(
+      "state_changed",
+      (snap) => {
+        let percentage = (snap.bytesTransferred / snap.totalBytes) * 100;
+        setProgress(percentage);
+        console.log(percentage);
+      },
+      (err) => {
+        setError(err);
+      },
+      async () => {
+        const url = await storageRef.getDownloadURL();
+        setUrl(url);
+      }
+    );
+  };
+
+  useEffect(() => {
+    if (file) {
+      uploadtoStorage(file);
+    }
+  }, [file]);
+  // references
 
   const handleEditorChange = (e) => {
     setValuetext(e.target.getContent());
@@ -20,6 +65,21 @@ const CreatePost = () => {
 
   const handleEditorChangeName = (e) => {
     setValuename(e.target.value);
+  };
+
+  const handleImgForm = (e) => {
+    console.log(e.target);
+  };
+
+  const handleFileChange = (e) => {
+    let fileSelect = e.target.files[0];
+    if (fileSelect && types.includes(fileSelect.type)) {
+      setFile(fileSelect);
+      setFileErr("");
+    } else {
+      setFile(null);
+      setFileErr("Img Format - image/png or  image/jpeg ");
+    }
   };
 
   function isMatchingTitle(element) {
@@ -36,29 +96,55 @@ const CreatePost = () => {
     } else {
       console.log("thatsfine");
       sendToFireBase();
+      navigate("/");
     }
-    // Originalana na find e = .find((el)=> el>5) za tova ismatching ima element
   };
 
   const sendToFireBase = () => {
-    firebase.firestore().collection("times").add({
+    firebase.firestore().collection("blogpost").add({
       name: valuename,
-      upvotes: 1009,
-      image:
-        "https://p.bigstockphoto.com/GeFvQkBbSLaMdpKXF1Zv_bigstock-Aerial-View-Of-Blue-Lakes-And--227291596.jpg",
-      pointEvents: true,
+      likes: [],
+      useremail: useremail,
+      image: url,
+      date: true,
       title: valuetitle,
       text: valuetext,
+      date: new Date().toISOString(),
     });
   };
+
   return (
     <div>
-      <button onClick={checkMegirl}>guz</button>
-      <h1>hi</h1>
-      <label>Title</label>
-      <input type="text" onChange={handleEditorChangeTitle} />
-      <label>From</label>
-      <input type="text" onChange={handleEditorChangeName} />
+      <button className="sendbtN" onClick={checkMegirl}>
+        Publish Post
+      </button>
+      <div className="postForm">
+        <label>Title</label>
+        <input type="text" onChange={handleEditorChangeTitle} />
+        <label>From</label>
+        <input type="text" onChange={handleEditorChangeName} />
+        <input type="file" onChange={handleFileChange} />
+        <div className="progress-bar">
+          {url && <img src={url} alt={url} />}
+          {file && (
+            <motion.div
+              className="progress-barfill"
+              initial={{
+                width: 0,
+                backgroundColor: "#EF476F",
+              }}
+              animate={{
+                width: progress + "%",
+                backgroundColor: "#EF476F",
+              }}
+              transition={{ duration: 6 }}
+            ></motion.div>
+          )}
+        </div>
+
+        {fileErr && <span>{fileErr}</span>}
+      </div>
+
       <Editor
         initialValue=""
         apiKey="adzmz3wnuoqc3ez1x0r9tfspmkow9kri6fx2i3cw0ux2d6tt"
@@ -74,11 +160,10 @@ const CreatePost = () => {
           toolbar:
             "undo redo | formatselect | bold italic | \
             alignleft aligncenter alignright | \
-            bullist numlist outdent indent | image |help",
+            bullist numlist outdent indent | image  |help",
         }}
         onChange={handleEditorChange}
       />
-      <button onClick={sendToFireBase}>Send</button>
     </div>
   );
 };
