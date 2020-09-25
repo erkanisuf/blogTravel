@@ -11,8 +11,9 @@ export const BlogProvider = (props) => {
   const [userid, setuserId] = useState("");
   const [useremail, setuserEmail] = useState("");
   const [pardq, setPardq] = useState("");
+  const [favorites, setfavorites] = useState([]);
 
-  console.log(pardq, "PADIIIIIIIIIIIm");
+  console.log(favorites, "favorites");
   useEffect(() => {
     auth.onAuthStateChanged((authuser) => {
       console.log("Auth_Status_Change", authuser);
@@ -44,6 +45,20 @@ export const BlogProvider = (props) => {
     };
   }, [userid]);
 
+  useEffect(() => {
+    const unsub = db.collection("favoritePost").onSnapshot((snapshot) => {
+      const allPost = snapshot.docs.map((doc) => ({
+        id: doc.id,
+        ...doc.data(),
+      }));
+      setfavorites(allPost);
+      setLoaded(true);
+    });
+    return () => {
+      unsub();
+    };
+  }, [userid]);
+
   return (
     <BlogContext.Provider
       value={{
@@ -52,6 +67,7 @@ export const BlogProvider = (props) => {
         valueThree: [userid, setuserId],
         valueFour: [useremail, setuserEmail],
         valueFive: [pardq, setPardq],
+        valueSix: [favorites, setfavorites],
       }}
     >
       {loaded && props.children}

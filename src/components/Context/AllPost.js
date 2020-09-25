@@ -2,8 +2,9 @@ import React, { useContext, useState } from "react";
 import { BlogContext } from "./BlogContext";
 import Moment from "react-moment";
 const AllPost = () => {
-  const { valueOne, valueFive } = useContext(BlogContext);
+  const { valueOne, valueFour, valueFive } = useContext(BlogContext);
   const [blogs] = valueOne;
+  const [useremail] = valueFour;
 
   const [mainArr, setmainArr] = useState([...blogs]);
 
@@ -44,6 +45,14 @@ const AllPost = () => {
 
     setmainArr(mostLiked);
   };
+
+  const checkuserAndPost = () => {
+    const abus = blogs.filter((el) => {
+      return el.useremail === useremail;
+    });
+    console.log("gg", abus);
+  };
+  checkuserAndPost();
 
   console.log("filter arr BEFORE", mainArr);
   return (

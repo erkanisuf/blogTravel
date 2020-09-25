@@ -5,7 +5,7 @@ import "./PostDetail.css";
 import { AiFillHeart } from "react-icons/ai";
 import { AiOutlineHeart } from "react-icons/ai";
 import { FaRegComment } from "react-icons/fa";
-
+import firebase from "firebase";
 import { db } from "../../firebase/firebase";
 import { Link } from "react-router-dom";
 import { FaUser } from "react-icons/fa";
@@ -18,11 +18,16 @@ const Detail = () => {
   const { id } = useParams();
   const dataRouter = id;
 
-  const navigate = useNavigate();
-  const { valueOne, valueTwo, valueThree, valueFour } = useContext(BlogContext);
-  const [blogs] = valueOne;
-  const detailBlogArr = blogs.find((el) => el.id === dataRouter);
+  console.log("routt", dataRouter);
 
+  const navigate = useNavigate();
+  const { valueOne, valueTwo, valueThree, valueFour, valueSix } = useContext(
+    BlogContext
+  );
+  const [blogs] = valueOne;
+  const [favorites, setfavorites] = valueSix;
+  const copyofBlogsArrDetail = blogs.find((el) => el.id === dataRouter);
+  console.log("copyofBlogsArrDetail", copyofBlogsArrDetail.name);
   const [userId] = valueThree;
   const [useremail] = valueFour;
   const [loggedIn] = valueTwo;
@@ -30,12 +35,14 @@ const Detail = () => {
   const [logErr, setLogErr] = useState("");
   const [commentShow, setcommentShow] = useState(false);
 
+  console.log(commentShow);
+
   useEffect(() => {
     setLogErr("");
-  }, [detailBlogArr]);
+  }, [copyofBlogsArrDetail]);
 
   const filltheButton = () => {
-    if (detailBlogArr.likes.find((el) => el === useremail)) {
+    if (copyofBlogsArrDetail.likes.find((el) => el === useremail)) {
       setBtnFill(false);
       return false;
     } else {
@@ -48,7 +55,7 @@ const Detail = () => {
   });
 
   const upVotebtnPost = () => {
-    const copyArrPost = { ...detailBlogArr };
+    const copyArrPost = { ...copyofBlogsArrDetail };
 
     if (loggedIn) {
       const pushArray = copyArrPost.likes;
@@ -60,7 +67,7 @@ const Detail = () => {
       } else {
         setBtnFill(true);
         pushArray.push(useremail);
-        writeUserData(detailBlogArr.id, pushArray);
+        writeUserData(copyofBlogsArrDetail.id, pushArray);
       }
     } else {
       setLogErr("Only registered can vote");
@@ -68,33 +75,71 @@ const Detail = () => {
   };
 
   function writeUserData(id, sendObj) {
-    db.collection("blogpost").doc(id).update({
+    db.collection("times").doc(id).update({
       likes: sendObj,
     });
   }
-  console.log(detailBlogArr.date);
+
+  const checkuserfavorites = () => {
+    const erko = [...favorites];
+    const engin = erko.find((el) => {
+      return el.id === useremail;
+    });
+    console.log(engin);
+    if (engin) {
+      console.log(true);
+      const sanie = engin.favoritePost;
+      sanie.push(copyofBlogsArrDetail.id);
+      console.log(sanie, "sanie");
+      addtoFavorites(sanie);
+    } else {
+      console.log(false);
+      firebase
+        .firestore()
+        .collection("favoritePost")
+        .doc(useremail)
+        .set({
+          favoritePost: [copyofBlogsArrDetail.id],
+          useremail: useremail,
+          userid: userId,
+        });
+    }
+    console.log(erko);
+    console.log(engin);
+  };
+
+  const addtoFavorites = (param) => {
+    firebase.firestore().collection("favoritePost").doc(useremail).set({
+      favoritePost: param,
+      useremail: useremail,
+      userid: userId,
+    });
+  };
 
   return (
     <>
       <div className="containerPostDetail">
         <div className="titleheader">
-          <h1>{detailBlogArr.title}</h1>
+          <h1>{copyofBlogsArrDetail.title}</h1>
           <span>
             <FaUser /> {"  "}
-            {detailBlogArr.name}
+            {copyofBlogsArrDetail.name}
           </span>
           <span>
-            <Moment format="YYYY/MM/DD">{detailBlogArr.date}</Moment>
+            <Moment format="YYYY/MM/DD">{copyofBlogsArrDetail.date}</Moment>
           </span>
-          <span>{detailBlogArr.useremail}</span>
+          <span>{copyofBlogsArrDetail.useremail}</span>
         </div>
         <div className="imgheader">
-          <img src={detailBlogArr.image} alt={detailBlogArr.name} />
+          <img
+            src={copyofBlogsArrDetail.image}
+            alt={copyofBlogsArrDetail.name}
+          />
         </div>
 
         <div
           className="themaintext"
-          dangerouslySetInnerHTML={{ __html: detailBlogArr.text }}
+          dangerouslySetInnerHTML={{ __html: copyofBlogsArrDetail.text }}
         ></div>
 
         <div className="btnandcomment">
@@ -107,7 +152,7 @@ const Detail = () => {
                   fontSize: "15px",
                 }}
               >
-                {detailBlogArr.likes.length} Upvotes
+                {copyofBlogsArrDetail.likes.length} Upvotes
                 <p style={{ color: "red" }}>{logErr}</p>
               </span>
               <span
@@ -126,7 +171,7 @@ const Detail = () => {
                   fontSize: "15px",
                 }}
               >
-                {detailBlogArr.likes.length} Upvotes
+                {copyofBlogsArrDetail.likes.length} Upvotes
                 <p style={{ color: "red" }}>{logErr}</p>
               </span>
 
@@ -155,9 +200,10 @@ const Detail = () => {
             <FaRegComment />
           </span>
 
-          {commentShow && <Comment commentId={detailBlogArr.id} />}
+          {commentShow && <Comment commentId={copyofBlogsArrDetail.id} />}
         </div>
       </div>
+      <button onClick={checkuserfavorites}>add to favorite</button>
     </>
   );
 };

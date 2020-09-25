@@ -14,6 +14,7 @@ import CreatePost from "./components/Context/CreatePost";
 import Login from "./components/Context/Login";
 import Detail from "./components/Context/Detail";
 import AllPost from "./components/Context/AllPost";
+import UserPanel from "./components/Context/UserPanel";
 
 function App() {
   return (
@@ -25,6 +26,7 @@ function App() {
           <Route path="login/" element={<Login />} />
           <Route path="createpost/" element={<CreatePost />} />
           <Route path="allpost/" element={<AllPost />} />
+          <Route path="userpanel/" element={<UserPanel />} />
         </Routes>
       </Layout>
     </BlogProvider>

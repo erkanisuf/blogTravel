@@ -8,9 +8,10 @@ import { motion } from "framer-motion";
 import { useNavigate } from "react-router-dom";
 
 const CreatePost = () => {
-  const { valueOne, valueFour } = useContext(BlogContext);
+  const { valueOne, valueThree, valueFour } = useContext(BlogContext);
   const [blogs] = valueOne;
   const [useremail, setuserEmail] = valueFour;
+  const [userid, setuserId] = valueThree;
 
   //////////////////////////////////////////////
   const [valuetext, setValuetext] = useState("");
@@ -105,6 +106,7 @@ const CreatePost = () => {
       name: valuename,
       likes: [],
       useremail: useremail,
+      userid: userid,
       image: url,
       date: true,
       title: valuetitle,
