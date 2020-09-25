@@ -28,14 +28,17 @@ export const BlogProvider = (props) => {
   }, []);
 
   useEffect(() => {
-    const unsub = db.collection("blogpost").onSnapshot((snapshot) => {
-      const allPost = snapshot.docs.map((doc) => ({
-        id: doc.id,
-        ...doc.data(),
-      }));
-      setBlogs(allPost);
-      setLoaded(true);
-    });
+    const unsub = db
+      .collection("blogpost")
+      .orderBy("date", "desc")
+      .onSnapshot((snapshot) => {
+        const allPost = snapshot.docs.map((doc) => ({
+          id: doc.id,
+          ...doc.data(),
+        }));
+        setBlogs(allPost);
+        setLoaded(true);
+      });
     return () => {
       unsub();
     };

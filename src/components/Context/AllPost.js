@@ -29,7 +29,7 @@ const AllPost = () => {
     const LeastLiked = coppyofBlogs
       .sort((a, b) => {
         console.log(a.likes.length, "b", b.likes.length);
-        return a.likes.length - b.length;
+        return b.likes.length - a.likes.length;
       })
       .reverse();
     setmainArr(LeastLiked);
@@ -38,7 +38,8 @@ const AllPost = () => {
   const MostLiked = () => {
     const coppyofBlogs = [...blogs];
     const mostLiked = coppyofBlogs.sort((a, b) => {
-      return a.likes.length - b.length;
+      console.log(a, b);
+      return b.likes.length - a.likes.length;
     });
 
     setmainArr(mostLiked);
