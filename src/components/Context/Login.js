@@ -1,21 +1,19 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { auth } from "../../firebase/firebase";
-import firebase from "firebase";
+
 import "./Login.css";
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [errorMsg, seterrorMsg] = useState("");
   const navigate = useNavigate();
-  console.log(email, password);
 
   const register = (e) => {
     e.preventDefault();
     auth
       .createUserWithEmailAndPassword(email, password)
       .then((auth) => {
-        console.log(auth);
         if (auth) {
           navigate("/");
         }
@@ -29,7 +27,6 @@ const Login = () => {
     auth
       .signInWithEmailAndPassword(email, password)
       .then((auth) => {
-        console.log("logged as", auth);
         if (auth) {
           navigate("/");
         }
@@ -37,10 +34,6 @@ const Login = () => {
       .catch((err) => seterrorMsg(err));
   };
 
-  const signOut = (e) => {
-    e.preventDefault();
-    auth.signOut();
-  };
   return (
     <div className="containerMain">
       <div className="imageContLogin">

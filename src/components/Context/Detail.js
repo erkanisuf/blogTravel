@@ -1,5 +1,5 @@
 import React, { useContext, useState, useEffect } from "react";
-import { useLocation, useNavigate, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import { BlogContext } from "./BlogContext";
 import "./PostDetail.css";
 import { AiFillHeart } from "react-icons/ai";
@@ -7,35 +7,28 @@ import { AiOutlineHeart } from "react-icons/ai";
 import { FaRegComment } from "react-icons/fa";
 import firebase from "firebase";
 import { db } from "../../firebase/firebase";
-import { Link } from "react-router-dom";
 import { FaUser } from "react-icons/fa";
 
 import Comment from "./Comment";
 import Moment from "react-moment";
 
 const Detail = () => {
-  const { state } = useLocation();
   const { id } = useParams();
   const dataRouter = id;
 
-  console.log("routt", dataRouter);
-
-  const navigate = useNavigate();
   const { valueOne, valueTwo, valueThree, valueFour, valueSix } = useContext(
     BlogContext
   );
   const [blogs] = valueOne;
-  const [favorites, setfavorites] = valueSix;
+  const [favorites] = valueSix;
   const copyofBlogsArrDetail = blogs.find((el) => el.id === dataRouter);
-  console.log("copyofBlogsArrDetail", copyofBlogsArrDetail.name);
+
   const [userId] = valueThree;
   const [useremail] = valueFour;
   const [loggedIn] = valueTwo;
   const [btnFill, setBtnFill] = useState(null);
   const [logErr, setLogErr] = useState("");
   const [commentShow, setcommentShow] = useState(false);
-
-  console.log(commentShow);
 
   useEffect(() => {
     setLogErr("");
@@ -75,7 +68,7 @@ const Detail = () => {
   };
 
   function writeUserData(id, sendObj) {
-    db.collection("times").doc(id).update({
+    db.collection("blogpost").doc(id).update({
       likes: sendObj,
     });
   }
@@ -85,15 +78,13 @@ const Detail = () => {
     const engin = erko.find((el) => {
       return el.id === useremail;
     });
-    console.log(engin);
+
     if (engin) {
-      console.log(true);
       const sanie = engin.favoritePost;
       sanie.push(copyofBlogsArrDetail.id);
-      console.log(sanie, "sanie");
+
       addtoFavorites(sanie);
     } else {
-      console.log(false);
       firebase
         .firestore()
         .collection("favoritePost")
@@ -104,8 +95,6 @@ const Detail = () => {
           userid: userId,
         });
     }
-    console.log(erko);
-    console.log(engin);
   };
 
   const addtoFavorites = (param) => {

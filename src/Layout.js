@@ -13,7 +13,7 @@ import { ImExit } from "react-icons/im";
 function Layout(props) {
   const { valueTwo, valueThree } = useContext(BlogContext);
   const [loggedIn, setloggedIn] = valueTwo;
-  const [userId, setuserId] = valueThree;
+  const [, setuserId] = valueThree;
   const navigate = useNavigate();
 
   const signOut = (e) => {
@@ -59,9 +59,17 @@ function Layout(props) {
 
             <span className="loginBar">
               {loggedIn ? (
-                <p onClick={signOut}>
-                  <ImExit /> Sign Out
-                </p>
+                <div>
+                  <p onClick={signOut}>
+                    <ImExit /> Sign Out
+                  </p>
+                  <Link
+                    to="userpanel/"
+                    style={{ textDecoration: "none", color: "black" }}
+                  >
+                    <p>User Panel </p>
+                  </Link>
+                </div>
               ) : (
                 <Link
                   to={!loggedIn && "login/"}

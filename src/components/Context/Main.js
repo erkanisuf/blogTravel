@@ -2,29 +2,19 @@ import React, { useContext, useState } from "react";
 import { BlogContext } from "./BlogContext";
 import "./Main.css";
 import { Link, Outlet } from "react-router-dom";
-import { useNavigate, useSearchParams } from "react-router-dom";
-import { Navigate } from "react-router-dom";
 import { SiSuperuser } from "react-icons/si";
 import { RiArrowDropDownLine } from "react-icons/ri";
 import { RiArrowDropUpLine } from "react-icons/ri";
 import { IconContext } from "react-icons";
 
 const Main = () => {
-  const { valueOne, valueFive } = useContext(BlogContext);
+  const { valueOne } = useContext(BlogContext);
   const [blogs] = valueOne;
-  const navigate = useNavigate();
-  console.log(blogs);
 
   const [value, setValue] = useState(5);
   const [isOpen, setisOpen] = useState(true);
-  let [searchParams, setSearchParams] = useSearchParams();
+  // let [searchParams, setSearchParams] = useSearchParams();
 
-  // function test() {
-  //   blogs.map((key, fart) => {
-  //     console.log(key);
-  //   });
-  // // }
-  // test();
   const addMore = () => {
     setValue(value + 3);
     showMore();

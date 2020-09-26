@@ -1,5 +1,4 @@
 import React, { useState, createContext, useEffect } from "react";
-import { useMatch } from "react-router";
 import { db, auth } from "../../firebase/firebase"; // add
 
 export const BlogContext = createContext();
@@ -13,10 +12,8 @@ export const BlogProvider = (props) => {
   const [pardq, setPardq] = useState("");
   const [favorites, setfavorites] = useState([]);
 
-  console.log(favorites, "favorites");
   useEffect(() => {
     auth.onAuthStateChanged((authuser) => {
-      console.log("Auth_Status_Change", authuser);
       if (authuser) {
         setLoggedIn(true);
         setuserId(authuser.uid);

@@ -1,34 +1,57 @@
 import React, { useContext, useState, useEffect } from "react";
 import { BlogContext } from "./BlogContext";
+import { Link } from "react-router-dom";
 
 const UserPanel = () => {
-  const { valueOne, valueThree, valueFour, valueSix } = useContext(BlogContext);
+  const { valueOne, valueFour, valueSix } = useContext(BlogContext);
   const [blogs] = valueOne;
-  const [useremail, setuserEmail] = valueFour;
-  const [userid, setuserId] = valueThree;
-  const [favorites, setfavorites] = valueSix;
 
-  console.log(favorites);
-  console.log(blogs);
+  const [useremail] = valueFour;
 
-  const checkuserAndPost = () => {
-    let arr = blogs;
-    let favK = favorites.find((el) => {
-      return el.id === useremail;
-    });
+  const [favorites] = valueSix;
+  const [myFavs, setmyFavs] = useState([]);
 
-    const putka = { ...favK };
-    const anusaa = putka.favoritePost;
-    const kurche = [...anusaa];
-    console.log("kurche", kurche);
+  useEffect(() => {
+    const checkuserAndPost = () => {
+      let favK = favorites.find((el) => {
+        return el.id === useremail;
+      });
 
-    const intersection = blogs.filter((element) => kurche.includes(element.id));
-    console.log(intersection);
-  };
+      if (favK) {
+        const putka = { ...favK };
+        const anusaa = putka.favoritePost;
+        const kurche = [...anusaa];
+
+        const intersection = blogs.filter((element) =>
+          kurche.includes(element.id)
+        );
+
+        const thiswillupdate = intersection;
+        setmyFavs(thiswillupdate);
+      } else {
+        console.log("not found user");
+      }
+    };
+    checkuserAndPost();
+  }, [blogs, favorites]);
 
   return (
     <div>
-      <button onClick={checkuserAndPost}>sllslsls</button>
+      {myFavs.length > 0
+        ? myFavs.map((key, index) => {
+            return (
+              <div key={index}>
+                <Link
+                  to={`/detail/${key.id}`}
+                  state={key}
+                  style={{ textDecoration: "none" }}
+                >
+                  <p>{key.title}</p>
+                </Link>
+              </div>
+            );
+          })
+        : "No Favs yet"}
     </div>
   );
 };

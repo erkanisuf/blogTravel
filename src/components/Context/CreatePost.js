@@ -10,8 +10,8 @@ import { useNavigate } from "react-router-dom";
 const CreatePost = () => {
   const { valueOne, valueThree, valueFour } = useContext(BlogContext);
   const [blogs] = valueOne;
-  const [useremail, setuserEmail] = valueFour;
-  const [userid, setuserId] = valueThree;
+  const [useremail] = valueFour;
+  const [userid] = valueThree;
 
   //////////////////////////////////////////////
   const [valuetext, setValuetext] = useState("");
@@ -26,10 +26,6 @@ const CreatePost = () => {
   const [url, setUrl] = useState(null);
 
   const navigate = useNavigate();
-  console.log(url);
-  console.log(error);
-  console.log(progress);
-  console.log(file);
 
   const uploadtoStorage = (file) => {
     const storageRef = storageFB.ref(file.name);
@@ -38,7 +34,6 @@ const CreatePost = () => {
       (snap) => {
         let percentage = (snap.bytesTransferred / snap.totalBytes) * 100;
         setProgress(percentage);
-        console.log(percentage);
       },
       (err) => {
         setError(err);
@@ -68,10 +63,6 @@ const CreatePost = () => {
     setValuename(e.target.value);
   };
 
-  const handleImgForm = (e) => {
-    console.log(e.target);
-  };
-
   const handleFileChange = (e) => {
     let fileSelect = e.target.files[0];
     if (fileSelect && types.includes(fileSelect.type)) {
@@ -95,7 +86,6 @@ const CreatePost = () => {
     if (blogs.find(isMatchingTitle)) {
       alert("choose diffrent title");
     } else {
-      console.log("thatsfine");
       sendToFireBase();
       navigate("/");
     }
@@ -108,7 +98,7 @@ const CreatePost = () => {
       useremail: useremail,
       userid: userid,
       image: url,
-      date: true,
+
       title: valuetitle,
       text: valuetext,
       date: new Date().toISOString(),
@@ -117,6 +107,7 @@ const CreatePost = () => {
 
   return (
     <div>
+      {error && error}
       <button className="sendbtN" onClick={checkMegirl}>
         Publish Post
       </button>
@@ -160,9 +151,7 @@ const CreatePost = () => {
             "insertdatetime media table paste wordcount",
           ],
           toolbar:
-            "undo redo | formatselect | bold italic | \
-            alignleft aligncenter alignright | \
-            bullist numlist outdent indent | image  |help",
+            "undo redo | formatselect | bold italic | alignleft aligncenter alignright | bullist numlist outdent indent | image  | help",
         }}
         onChange={handleEditorChange}
       />
