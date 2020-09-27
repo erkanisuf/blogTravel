@@ -1,30 +1,35 @@
 import React, { useState, useContext, useEffect } from "react";
 import { Editor } from "@tinymce/tinymce-react";
-import firebase from "firebase"; // add
+import { db } from "../../../firebase/firebase";
 import { BlogContext } from "../Context/BlogContext";
 import { storageFB } from "../../../firebase/firebase";
-import "./CreatePost.css";
 import { motion } from "framer-motion";
 import { useNavigate } from "react-router-dom";
+import { useParams } from "react-router-dom";
 
 const CreatePost = () => {
   const { valueOne, valueThree, valueFour } = useContext(BlogContext);
   const [blogs] = valueOne;
   const [useremail] = valueFour;
   const [userid] = valueThree;
+  const { id } = useParams();
+  const linkData = id;
+  console.log("lik data", linkData);
+  const findObject = blogs.find((el) => el.id === linkData);
+  console.log(findObject);
 
   //////////////////////////////////////////////
-  const [valuetext, setValuetext] = useState("");
+  const [valuetext, setValuetext] = useState(findObject.text);
   console.log(valuetext);
-  const [valuetitle, setValuetitle] = useState("");
-  const [valuename, setValuename] = useState("");
+  const [valuetitle, setValuetitle] = useState(findObject.title);
+  const [valuename, setValuename] = useState(findObject.name);
   const [file, setFile] = useState(null);
   const [fileErr, setFileErr] = useState(null);
   const types = ["image/png", "image/jpeg"];
   //////////////////////////////////////////////////
   const [progress, setProgress] = useState(0);
   const [error, setError] = useState(null);
-  const [url, setUrl] = useState(null);
+  const [url, setUrl] = useState(findObject.image);
 
   const navigate = useNavigate();
 
@@ -94,30 +99,37 @@ const CreatePost = () => {
   };
 
   const sendToFireBase = () => {
-    firebase.firestore().collection("blogpost").add({
-      name: valuename,
-      likes: [],
-      useremail: useremail,
-      userid: userid,
-      image: url,
-      uid: firebase.auth().currentUser.uid,
-      title: valuetitle,
-      text: valuetext,
-      date: new Date().toISOString(),
-    });
+    db.collection("blogpost")
+      .doc(id)
+      .update({
+        name: valuename,
+        image: url,
+        title: valuetitle,
+        text: valuetext,
+        date: new Date().toISOString(),
+        edited: "Last Edited" + new Date().toISOString(),
+      });
   };
 
   return (
     <div>
       {error && error}
       <button className="sendbtN" onClick={checkMegirl}>
-        Publish Post
+        Edit
       </button>
       <div className="postForm">
         <label>Title</label>
-        <input type="text" onChange={handleEditorChangeTitle} />
+        <input
+          type="text"
+          onChange={handleEditorChangeTitle}
+          defaultValue={findObject.title}
+        />
         <label>From</label>
-        <input type="text" onChange={handleEditorChangeName} />
+        <input
+          type="text"
+          onChange={handleEditorChangeName}
+          defaultValue={findObject.name}
+        />
         <input type="file" onChange={handleFileChange} />
         <div className="progress-bar">
           {url && <img src={url} alt={url} />}
@@ -141,7 +153,7 @@ const CreatePost = () => {
       </div>
 
       <Editor
-        initialValue=""
+        initialValue={findObject.text}
         apiKey="adzmz3wnuoqc3ez1x0r9tfspmkow9kri6fx2i3cw0ux2d6tt"
         init={{
           height: 500,

@@ -9,6 +9,7 @@ import Login from "./components/Context/Login/Login";
 import Detail from "./components/Context/Detail/Detail";
 import AllPost from "./components/Context/AllPost/AllPost";
 import UserPanel from "./components/Context/UserPanel/UserPanel";
+import EditPost from "./components/Context/UserPanel/EditPost";
 import { BlogContext } from "./components/Context/Context/BlogContext";
 import PrivateRouter from "./PrivateRouter";
 
@@ -20,6 +21,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Main />} />
         <Route path="detail/:id" element={<Detail />} />
+        <Route path="detail/:id/editpost/" element={<EditPost />} />
         <Route path="login/" element={<Login />} />
 
         <Route path="allpost/" element={<AllPost />} />

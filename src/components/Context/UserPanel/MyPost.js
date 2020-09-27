@@ -1,12 +1,15 @@
 import React from "react";
 import { Link } from "react-router-dom";
-
+import { db } from "../../../firebase/firebase";
 const UserPanel = ({ useremail, blogs }) => {
   const mypost = blogs.filter((el) => {
     return el.useremail === useremail;
   });
 
-  console.log("mypost", mypost);
+  const deletePost = (e) => {
+    console.log(e);
+    db.collection("blogpost").doc(e).delete();
+  };
 
   return (
     <div>
@@ -15,6 +18,21 @@ const UserPanel = ({ useremail, blogs }) => {
         ? mypost.map((key, index) => {
             return (
               <div key={index}>
+                <button
+                  onClick={() => {
+                    deletePost(key.id);
+                  }}
+                >
+                  delete
+                </button>
+                <Link
+                  to={`/detail/${key.id}/editpost/`}
+                  state={key}
+                  style={{ textDecoration: "none" }}
+                >
+                  <button>Edit</button>
+                </Link>
+
                 <Link
                   to={`/detail/${key.id}`}
                   state={key}
