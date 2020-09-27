@@ -1,9 +1,9 @@
 import React, { useContext } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { BlogContext } from "./components/Context/BlogContext";
-import { auth } from "./firebase/firebase";
+import { BlogContext } from "../components/Context/Context/BlogContext";
+import { auth } from "../firebase/firebase";
 
-import UpVotesBlog from "./components/Context/UpVotesBlog";
+import UpVotesBlog from "../components/Context/UpVotesBlog/UpVotesBlog";
 import "./Layout.css";
 
 import { GiEarthAfricaEurope } from "react-icons/gi";

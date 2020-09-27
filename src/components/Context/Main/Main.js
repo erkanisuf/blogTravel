@@ -1,5 +1,5 @@
 import React, { useContext, useState } from "react";
-import { BlogContext } from "./BlogContext";
+import { BlogContext } from "../Context/BlogContext";
 import "./Main.css";
 import { Link, Outlet } from "react-router-dom";
 import { SiSuperuser } from "react-icons/si";

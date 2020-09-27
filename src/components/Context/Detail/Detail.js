@@ -1,15 +1,15 @@
 import React, { useContext, useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
-import { BlogContext } from "./BlogContext";
+import { BlogContext } from "../Context/BlogContext";
 import "./PostDetail.css";
 import { AiFillHeart } from "react-icons/ai";
 import { AiOutlineHeart } from "react-icons/ai";
 import { FaRegComment } from "react-icons/fa";
 import firebase from "firebase";
-import { db } from "../../firebase/firebase";
+import { db } from "../../../firebase/firebase";
 import { FaUser } from "react-icons/fa";
 
-import Comment from "./Comment";
+import Comment from "../Comment/Comment";
 import Moment from "react-moment";
 
 const Detail = () => {
@@ -21,6 +21,7 @@ const Detail = () => {
   );
   const [blogs] = valueOne;
   const [favorites] = valueSix;
+
   const copyofBlogsArrDetail = blogs.find((el) => el.id === dataRouter);
 
   const [userId] = valueThree;
@@ -28,7 +29,33 @@ const Detail = () => {
   const [loggedIn] = valueTwo;
   const [btnFill, setBtnFill] = useState(null);
   const [logErr, setLogErr] = useState("");
+
   const [commentShow, setcommentShow] = useState(false);
+  const [favFill, setfavFill] = useState(null);
+  console.log(favFill);
+
+  useEffect(() => {
+    let findArrofFavs = favorites.find((el) => {
+      return el.id === useremail;
+    });
+    if (findArrofFavs) {
+      const copyofFindedEl = { ...findArrofFavs };
+      const copyofFavPost = copyofFindedEl.favoritePost;
+      const favpost = [...copyofFavPost];
+
+      const result = favpost.find((el) => {
+        return el === copyofBlogsArrDetail.id;
+      });
+
+      if (result) {
+        console.log(result);
+        setfavFill(true);
+      } else {
+        console.log("notinFavs");
+        setfavFill(false);
+      }
+    }
+  }, [favorites, useremail, copyofBlogsArrDetail]);
 
   useEffect(() => {
     setLogErr("");
@@ -80,10 +107,34 @@ const Detail = () => {
     });
 
     if (engin) {
-      const sanie = engin.favoritePost;
-      sanie.push(copyofBlogsArrDetail.id);
+      let findArrofFavs = favorites.find((el) => {
+        return el.id === useremail;
+      });
+      if (findArrofFavs) {
+        const copyofFindedEl = { ...findArrofFavs };
+        const copyofFavPost = copyofFindedEl.favoritePost;
+        const favpost = [...copyofFavPost];
 
-      addtoFavorites(sanie);
+        const result = favpost.find((el) => {
+          return el === copyofBlogsArrDetail.id;
+        });
+
+        if (result) {
+          console.log(result);
+          alert("already in favs");
+        } else {
+          console.log("notinFavs");
+          const sanie = engin.favoritePost;
+          sanie.push(copyofBlogsArrDetail.id);
+
+          addtoFavorites(sanie);
+        }
+      }
+
+      // const sanie = engin.favoritePost;
+      // sanie.push(copyofBlogsArrDetail.id);
+
+      // addtoFavorites(sanie);
     } else {
       firebase
         .firestore()
@@ -150,6 +201,12 @@ const Detail = () => {
               >
                 {btnFill ? <AiOutlineHeart /> : <AiFillHeart />}
               </span>
+              <button
+                style={{ backgroundColor: favFill ? "red" : "green" }}
+                onClick={checkuserfavorites}
+              >
+                add to favorite
+              </button>
             </div>
           ) : (
             <div>
@@ -175,6 +232,11 @@ const Detail = () => {
               >
                 <AiOutlineHeart />
               </span>
+              <button
+                onClick={() => setLogErr("Only registered can add to fav")}
+              >
+                add to favorite
+              </button>
             </div>
           )}
           <span
@@ -192,7 +254,6 @@ const Detail = () => {
           {commentShow && <Comment commentId={copyofBlogsArrDetail.id} />}
         </div>
       </div>
-      <button onClick={checkuserfavorites}>add to favorite</button>
     </>
   );
 };

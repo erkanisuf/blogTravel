@@ -1,5 +1,5 @@
 import React, { useContext, useState, useEffect } from "react";
-import { BlogContext } from "./BlogContext";
+import { BlogContext } from "../Context/BlogContext";
 import { Link } from "react-router-dom";
 
 const UserPanel = () => {
@@ -33,7 +33,7 @@ const UserPanel = () => {
       }
     };
     checkuserAndPost();
-  }, [blogs, favorites]);
+  }, [blogs, favorites, useremail]);
 
   return (
     <div>

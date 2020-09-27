@@ -1,15 +1,15 @@
 import React, { useContext } from "react";
 import "./App.css";
-import Main from "./components/Context/Main";
+import Main from "./components/Context/Main/Main";
 import { Routes, Route } from "react-router-dom";
-import Layout from "./Layout";
+import Layout from "./Layout/Layout";
 
-import CreatePost from "./components/Context/CreatePost";
-import Login from "./components/Context/Login";
-import Detail from "./components/Context/Detail";
-import AllPost from "./components/Context/AllPost";
-import UserPanel from "./components/Context/UserPanel";
-import { BlogContext } from "./components/Context/BlogContext";
+import CreatePost from "./components/Context/CreatePost/CreatePost";
+import Login from "./components/Context/Login/Login";
+import Detail from "./components/Context/Detail/Detail";
+import AllPost from "./components/Context/AllPost/AllPost";
+import UserPanel from "./components/Context/UserPanel/UserPanel";
+import { BlogContext } from "./components/Context/Context/BlogContext";
 import PrivateRouter from "./PrivateRouter";
 
 function App() {

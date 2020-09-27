@@ -1,10 +1,9 @@
 import React, { useContext, useState } from "react";
-import { BlogContext } from "./BlogContext";
+import { BlogContext } from "../Context/BlogContext";
 import Moment from "react-moment";
 const AllPost = () => {
   const { valueOne } = useContext(BlogContext);
   const [blogs] = valueOne;
-  // const [useremail] = valueFour;
 
   const [mainArr, setmainArr] = useState([...blogs]);
 
@@ -29,6 +28,7 @@ const AllPost = () => {
     const coppyofBlogs = [...blogs];
     const LeastLiked = coppyofBlogs
       .sort((a, b) => {
+        console.log(a.likes.length, "b", b.likes.length);
         return b.likes.length - a.likes.length;
       })
       .reverse();
@@ -38,19 +38,14 @@ const AllPost = () => {
   const MostLiked = () => {
     const coppyofBlogs = [...blogs];
     const mostLiked = coppyofBlogs.sort((a, b) => {
+      console.log(a, b);
       return b.likes.length - a.likes.length;
     });
 
     setmainArr(mostLiked);
   };
 
-  // const checkuserAndPost = () => {
-  //   const abus = blogs.filter((el) => {
-  //     return el.useremail === useremail;
-  //   });
-  // };
-  // checkuserAndPost();
-
+  console.log("filter arr BEFORE", mainArr);
   return (
     <div>
       <h1>Allpost</h1>

@@ -1,7 +1,7 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import { BrowserRouter as Router } from "react-router-dom";
-import { BlogProvider } from "./components/Context/BlogContext";
+import { BlogProvider } from "./components/Context/Context/BlogContext";
 
 import App from "./App";
 

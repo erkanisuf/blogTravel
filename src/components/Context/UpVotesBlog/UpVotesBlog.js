@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import { BlogContext } from "./BlogContext";
+import { BlogContext } from "../Context/BlogContext";
 import "./UpVotesBlog.css";
 import { Link } from "react-router-dom";
 import Carousel, {

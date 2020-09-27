@@ -1,5 +1,5 @@
 import React, { useState, createContext, useEffect } from "react";
-import { db, auth } from "../../firebase/firebase"; // add
+import { db, auth } from "../../../firebase/firebase"; // add
 
 export const BlogContext = createContext();
 

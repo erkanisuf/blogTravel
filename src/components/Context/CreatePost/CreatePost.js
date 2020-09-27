@@ -1,8 +1,8 @@
 import React, { useState, useContext, useEffect } from "react";
 import { Editor } from "@tinymce/tinymce-react";
 import firebase from "firebase"; // add
-import { BlogContext } from "./BlogContext";
-import { storageFB } from "../../firebase/firebase";
+import { BlogContext } from "../Context/BlogContext";
+import { storageFB } from "../../../firebase/firebase";
 import "./CreatePost.css";
 import { motion } from "framer-motion";
 import { useNavigate } from "react-router-dom";
@@ -15,6 +15,7 @@ const CreatePost = () => {
 
   //////////////////////////////////////////////
   const [valuetext, setValuetext] = useState("");
+  console.log(valuetext);
   const [valuetitle, setValuetitle] = useState("");
   const [valuename, setValuename] = useState("");
   const [file, setFile] = useState(null);
@@ -55,6 +56,7 @@ const CreatePost = () => {
   const handleEditorChange = (e) => {
     setValuetext(e.target.getContent());
   };
+
   const handleEditorChangeTitle = (e) => {
     setValuetitle(e.target.value);
   };
