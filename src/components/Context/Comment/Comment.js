@@ -1,14 +1,54 @@
-import React, { useEffect } from "react";
+import React, { useState } from "react";
+import { db } from "../../../firebase/firebase";
+import firebase from "firebase";
 
-const Comment = ({ commentId }) => {
-  useEffect(() => {
-    const commentBox = require("commentbox.io");
-    commentBox("5667082964303872-proj");
-  }, []);
+const Comment = ({ copyofBlogsArrDetail, useremail, avatar, loggedIn }) => {
+  const [textareavalue, settextareavalue] = useState("");
+  console.log(textareavalue);
+  const textareahandleChange = (e) => {
+    settextareavalue(e.target.value);
+  };
+
+  const sendToFireBase = () => {
+    const commentUser = {
+      text: textareavalue,
+      email: useremail,
+      date: new Date().toISOString(),
+      avatar: avatar,
+    };
+    db.collection("blogpost")
+      .doc(copyofBlogsArrDetail.id)
+      .update({
+        comments: firebase.firestore.FieldValue.arrayUnion(commentUser),
+      });
+  };
+  ///////////////////////UPDATES FIREBAS EARRAY
 
   return (
     <div>
-      <div className="commentbox" id={commentId} />
+      {copyofBlogsArrDetail.comments
+        ? copyofBlogsArrDetail.comments.map((key, index) => {
+            return (
+              <div key={index}>
+                <p>{key.text}</p>
+                <p>{key.email}</p>
+              </div>
+            );
+          })
+        : "No comments yet, Be the firs to comment"}
+      {loggedIn ? (
+        <div>
+          <label>Text Area</label>
+          <textarea
+            name="textarea"
+            value={textareavalue}
+            onChange={textareahandleChange}
+          />
+          <button onClick={sendToFireBase}>Comment</button>
+        </div>
+      ) : (
+        "Log in To Comment"
+      )}
     </div>
   );
 };

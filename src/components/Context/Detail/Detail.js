@@ -32,12 +32,14 @@ const Detail = () => {
 
   const [commentShow, setcommentShow] = useState(false);
   const [favFill, setfavFill] = useState(null);
-  console.log(favFill);
+  const [avatar, setAvatar] = useState(null);
 
   useEffect(() => {
     let findArrofFavs = favorites.find((el) => {
       return el.id === useremail;
     });
+    const avatar = { ...findArrofFavs };
+    setAvatar(avatar.avatar);
     if (findArrofFavs) {
       const copyofFindedEl = { ...findArrofFavs };
       const copyofFavPost = copyofFindedEl.favoritePost;
@@ -130,11 +132,6 @@ const Detail = () => {
           addtoFavorites(sanie);
         }
       }
-
-      // const sanie = engin.favoritePost;
-      // sanie.push(copyofBlogsArrDetail.id);
-
-      // addtoFavorites(sanie);
     } else {
       firebase
         .firestore()
@@ -251,7 +248,14 @@ const Detail = () => {
             <FaRegComment />
           </span>
 
-          {commentShow && <Comment commentId={copyofBlogsArrDetail.id} />}
+          {commentShow && (
+            <Comment
+              copyofBlogsArrDetail={copyofBlogsArrDetail}
+              useremail={useremail}
+              avatar={avatar}
+              loggedIn={loggedIn}
+            />
+          )}
         </div>
       </div>
     </>

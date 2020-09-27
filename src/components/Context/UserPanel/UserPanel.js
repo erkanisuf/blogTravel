@@ -1,6 +1,8 @@
-import React, { useContext, useState, useEffect } from "react";
+import React, { useContext, useState } from "react";
 import { BlogContext } from "../Context/BlogContext";
-import { Link } from "react-router-dom";
+import UserImage from "./UserImage";
+import UserFavorites from "./UserFavorites";
+import MyPost from "./MyPost";
 
 const UserPanel = () => {
   const { valueOne, valueFour, valueSix } = useContext(BlogContext);
@@ -9,49 +11,27 @@ const UserPanel = () => {
   const [useremail] = valueFour;
 
   const [favorites] = valueSix;
+
   const [myFavs, setmyFavs] = useState([]);
-
-  useEffect(() => {
-    const checkuserAndPost = () => {
-      let favK = favorites.find((el) => {
-        return el.id === useremail;
-      });
-
-      if (favK) {
-        const putka = { ...favK };
-        const anusaa = putka.favoritePost;
-        const kurche = [...anusaa];
-
-        const intersection = blogs.filter((element) =>
-          kurche.includes(element.id)
-        );
-
-        const thiswillupdate = intersection;
-        setmyFavs(thiswillupdate);
-      } else {
-        console.log("not found user");
-      }
-    };
-    checkuserAndPost();
-  }, [blogs, favorites, useremail]);
+  const [avatar, setAvatar] = useState(null);
 
   return (
     <div>
-      {myFavs.length > 0
-        ? myFavs.map((key, index) => {
-            return (
-              <div key={index}>
-                <Link
-                  to={`/detail/${key.id}`}
-                  state={key}
-                  style={{ textDecoration: "none" }}
-                >
-                  <p>{key.title}</p>
-                </Link>
-              </div>
-            );
-          })
-        : "No Favs yet"}
+      {avatar && <img src={avatar} alt={avatar} />}
+      <UserFavorites
+        myFavs={myFavs}
+        favorites={favorites}
+        useremail={useremail}
+        blogs={blogs}
+        setmyFavs={setmyFavs}
+      />
+      <UserImage
+        useremail={useremail}
+        favorites={favorites}
+        setAvatar={setAvatar}
+        blogs={blogs}
+      />
+      <MyPost useremail={useremail} blogs={blogs} />
     </div>
   );
 };
