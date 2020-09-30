@@ -1,0 +1,97 @@
+@import url("https://fonts.googleapis.com/css2?family=PT+Sans+Narrow&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap");
+
+$grey: rgba(135, 138, 140, 0.5);
+
+.ContainerAllPost {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  max-width: 1500px;
+  width: 80%;
+  margin: 0 auto;
+  height: 100%;
+  font-family: "PT Sans Narrow", sans-serif;
+  .filterButtons {
+    display: flex;
+    justify-content: flex-end;
+    align-self: flex-end;
+    span {
+      cursor: pointer;
+      padding-right: 2px;
+      margin: 0 5px;
+      color: #538d22;
+      font-weight: 550;
+      letter-spacing: 0.5px;
+
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+  }
+
+  .flexAllPost {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+
+    .flexPosts {
+      display: flex;
+      flex-direction: column;
+      margin: 10px;
+      border: 1px solid rgba(135, 138, 140, 0.5);
+      border-radius: 20px;
+    }
+
+    .theimgCOnt {
+      .flexImgTitle {
+        display: flex;
+        flex-direction: column;
+        .shortText {
+          width: 100%;
+          height: 50px;
+          text-overflow: ellipsis;
+          white-space: nowrap;
+          overflow: hidden;
+          align-self: center;
+        }
+      }
+      img {
+        width: 15%;
+        max-height: 150px;
+        object-fit: contain;
+        float: left;
+        padding: 5px;
+        border: 1px solid $grey;
+        margin: 15px;
+      }
+    }
+
+    .flexuserDate {
+      display: flex;
+      border-bottom: 1px solid rgba(135, 138, 140, 0.363);
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: flex-end;
+      font-size: 14px;
+      font-style: italic;
+      color: $grey;
+      font-weight: 900;
+      margin: 5px;
+      padding: 5px;
+    }
+    .flexLikesComments {
+      display: flex;
+
+      flex-direction: row;
+      justify-content: flex-end;
+
+      font-size: 18px;
+      padding: 0 5px 3px 0;
+      margin-right: 5px;
+      span {
+        margin-right: 5px;
+      }
+    }
+  }
+}

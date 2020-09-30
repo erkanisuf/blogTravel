@@ -23,7 +23,6 @@ function App() {
         <Route path="detail/:id" element={<Detail />} />
         <Route path="detail/:id/editpost/" element={<EditPost />} />
         <Route path="login/" element={<Login />} />
-
         <Route path="allpost/" element={<AllPost />} />
 
         <PrivateRouter

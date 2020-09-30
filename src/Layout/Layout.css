@@ -1,7 +1,12 @@
 @import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@300&family=Pacifico&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&display=swap");
+.LayoutJS {
+  width: 100%;
+}
+
 .themainbodyContainer {
   max-width: 1500px;
+  height: 100%;
   margin: 0 auto;
 }
 

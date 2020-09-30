@@ -6,6 +6,7 @@ import { storageFB } from "../../../firebase/firebase";
 import "./CreatePost.css";
 import { motion } from "framer-motion";
 import { useNavigate } from "react-router-dom";
+import { GrStatusGood } from "react-icons/gr";
 
 const CreatePost = () => {
   const { valueOne, valueThree, valueFour } = useContext(BlogContext);
@@ -82,11 +83,22 @@ const CreatePost = () => {
 
   const checkMegirl = () => {
     if (valuetext === "" || valuetitle === "" || valuename === "") {
-      alert("FIll all areas");
+      setError("FIll all areas");
+      return false;
+    }
+    if (!file) {
+      setFileErr("Upload Image");
+    }
+    if (
+      valuetext.length < 12 ||
+      valuetitle.length < 6 ||
+      valuename.length < 4
+    ) {
+      setError("Text min-length 13, Title-7,Name-5");
       return false;
     }
     if (blogs.find(isMatchingTitle)) {
-      alert("choose diffrent title");
+      setError("choose diffrent title");
     } else {
       sendToFireBase();
       navigate("/");
@@ -108,43 +120,58 @@ const CreatePost = () => {
   };
 
   return (
-    <div>
-      {error && error}
+    <div className="createPostJS">
       <button className="sendbtN" onClick={checkMegirl}>
         Publish Post
       </button>
-      <div className="postForm">
-        <label>Title</label>
-        <input type="text" onChange={handleEditorChangeTitle} />
-        <label>From</label>
-        <input type="text" onChange={handleEditorChangeName} />
-        <input type="file" onChange={handleFileChange} />
-        <div className="progress-bar">
-          {url && <img src={url} alt={url} />}
-          {file && (
-            <motion.div
-              className="progress-barfill"
-              initial={{
-                width: 0,
-                backgroundColor: "#EF476F",
-              }}
-              animate={{
-                width: progress + "%",
-                backgroundColor: "#EF476F",
-              }}
-              transition={{ duration: 6 }}
-            ></motion.div>
-          )}
-        </div>
+      <div className="crPostTop">
+        <div className="postForm">
+          <label>Title</label>
+          <input type="text" onChange={handleEditorChangeTitle} />
+          <label>From</label>
+          <input type="text" onChange={handleEditorChangeName} />
 
-        {fileErr && <span>{fileErr}</span>}
+          {error && <p style={{ color: "red" }}>{error}</p>}
+        </div>
+        <div className="uploaderA">
+          <input type="file" onChange={handleFileChange} />
+          <div className="progress-bar">
+            {file && (
+              <motion.div
+                className="progress-barfill"
+                initial={{
+                  width: 0,
+                  backgroundColor: "#EF476F",
+                }}
+                animate={{
+                  width: progress + "%",
+                  backgroundColor: "#538d22",
+                }}
+                transition={{ duration: 1 }}
+              ></motion.div>
+            )}
+
+            {fileErr && <span style={{ color: "red" }}>{fileErr}</span>}
+          </div>
+
+          <div className="imageUploaded">
+            {url && <img src={url} alt={url} />}
+          </div>
+        </div>
+        <span style={{ color: "red", fontSize: "35px" }}>
+          {progress === 100 && <GrStatusGood />}
+        </span>
       </div>
 
       <Editor
         initialValue=""
         apiKey="adzmz3wnuoqc3ez1x0r9tfspmkow9kri6fx2i3cw0ux2d6tt"
         init={{
-          height: 500,
+          selector: "textarea",
+          height: 300,
+
+          table_sizing_mode: "auto",
+          margin: "0 auto",
           menubar: false,
           plugins: [
             "advlist autolink lists link image",

@@ -24,69 +24,69 @@ function Layout(props) {
     navigate("/");
   };
   return (
-    <div>
-      <div>
-        <div className="logoBar">
-          <span>
-            <GiEarthAfricaEurope />
+    <div className="LayoutJS">
+      <div className="logoBar">
+        <span>
+          <GiEarthAfricaEurope />
+        </span>
+        <h1>Travel Blog</h1>
+      </div>
+
+      <div className="themainbodyContainer">
+        <div className="headerBar">
+          <nav className="navBar">
+            <ul>
+              <Link to="/" style={{ textDecoration: "none", color: "black" }}>
+                Home
+              </Link>
+
+              <Link
+                to="allpost/"
+                style={{ textDecoration: "none", color: "black" }}
+              >
+                All Post
+              </Link>
+              <Link
+                to={loggedIn ? "createpost/" : "login/"}
+                style={{ textDecoration: "none", color: "black" }}
+              >
+                Create Post
+              </Link>
+              <li>Filter</li>
+            </ul>
+          </nav>
+
+          <span className="loginBar">
+            {loggedIn ? (
+              <div>
+                <p onClick={signOut}>
+                  <ImExit /> Sign Out
+                </p>
+                <Link
+                  to="userpanel/"
+                  style={{ textDecoration: "none", color: "black" }}
+                >
+                  <p>User Panel </p>
+                </Link>
+              </div>
+            ) : (
+              <Link
+                to={!loggedIn && "login/"}
+                style={{ textDecoration: "none", color: "black" }}
+              >
+                {" "}
+                <p>
+                  <FaUser />
+                  {"  "}register/login
+                </p>
+              </Link>
+            )}
           </span>
-          <h1>Travel Blog</h1>
         </div>
-
-        <div className="themainbodyContainer">
-          <div className="headerBar">
-            <nav className="navBar">
-              <ul>
-                <Link to="/" style={{ textDecoration: "none", color: "black" }}>
-                  Home
-                </Link>
-
-                <Link
-                  to="allpost/"
-                  style={{ textDecoration: "none", color: "black" }}
-                >
-                  All Post
-                </Link>
-                <Link
-                  to={loggedIn ? "createpost/" : "login/"}
-                  style={{ textDecoration: "none", color: "black" }}
-                >
-                  Create Post
-                </Link>
-                <li>Filter</li>
-              </ul>
-            </nav>
-
-            <span className="loginBar">
-              {loggedIn ? (
-                <div>
-                  <p onClick={signOut}>
-                    <ImExit /> Sign Out
-                  </p>
-                  <Link
-                    to="userpanel/"
-                    style={{ textDecoration: "none", color: "black" }}
-                  >
-                    <p>User Panel </p>
-                  </Link>
-                </div>
-              ) : (
-                <Link
-                  to={!loggedIn && "login/"}
-                  style={{ textDecoration: "none", color: "black" }}
-                >
-                  {" "}
-                  <p>
-                    <FaUser />
-                    {"  "}register/login
-                  </p>
-                </Link>
-              )}
-            </span>
-          </div>
-          {props.children}
-          <UpVotesBlog />
-        </div>
+      </div>
+      {props.children}
+      <div>
+        <UpVotesBlog />
       </div>
     </div>
   );

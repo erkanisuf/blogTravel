@@ -26,7 +26,7 @@ const Comment = ({ copyofBlogsArrDetail, useremail, avatar, loggedIn }) => {
 
   return (
     <div>
-      {copyofBlogsArrDetail.comments
+      {copyofBlogsArrDetail.comments.length > 0
         ? copyofBlogsArrDetail.comments.map((key, index) => {
             return (
               <div key={index}>
