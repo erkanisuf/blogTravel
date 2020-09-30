@@ -6,7 +6,7 @@ import { storageFB } from "../../../firebase/firebase";
 import "./CreatePost.css";
 import { motion } from "framer-motion";
 import { useNavigate } from "react-router-dom";
-import { GrStatusGood } from "react-icons/gr";
+import { BsCheckCircle } from "react-icons/bs";
 
 const CreatePost = () => {
   const { valueOne, valueThree, valueFour } = useContext(BlogContext);
@@ -24,8 +24,11 @@ const CreatePost = () => {
   const types = ["image/png", "image/jpeg"];
   //////////////////////////////////////////////////
   const [progress, setProgress] = useState(0);
-  const [error, setError] = useState(null);
   const [url, setUrl] = useState(null);
+  //////////////////////////////////////////
+  const [titleErr, settitleErr] = useState(null);
+  const [nameErr, setnameErr] = useState(null);
+  const [textErr, setttextErr] = useState(null);
 
   const navigate = useNavigate();
 
@@ -38,7 +41,7 @@ const CreatePost = () => {
         setProgress(percentage);
       },
       (err) => {
-        setError(err);
+        setFileErr(err);
       },
       async () => {
         const url = await storageRef.getDownloadURL();
@@ -82,23 +85,33 @@ const CreatePost = () => {
   }
 
   const checkMegirl = () => {
-    if (valuetext === "" || valuetitle === "" || valuename === "") {
-      setError("FIll all areas");
+    if (valuetext === "" || valuetext.length < 12) {
+      setttextErr("Please fill text-area with more than 13 chars");
       return false;
+    } else {
+      setttextErr(null);
+    }
+    if (valuetitle === "" || valuetitle.length < 6) {
+      settitleErr("Please fill the title with more than 6 chars");
+      return false;
+    } else {
+      settitleErr(null);
+    }
+    if (valuename === "" || valuename.length < 4) {
+      setnameErr("Please fill name with more than 4 chars");
+      return false;
+    } else {
+      setnameErr(null);
     }
     if (!file) {
       setFileErr("Upload Image");
-    }
-    if (
-      valuetext.length < 12 ||
-      valuetitle.length < 6 ||
-      valuename.length < 4
-    ) {
-      setError("Text min-length 13, Title-7,Name-5");
       return false;
+    } else {
+      setFileErr(null);
     }
+
     if (blogs.find(isMatchingTitle)) {
-      setError("choose diffrent title");
+      settitleErr("choose diffrent title");
     } else {
       sendToFireBase();
       navigate("/");
@@ -116,22 +129,21 @@ const CreatePost = () => {
       title: valuetitle,
       text: valuetext,
       date: new Date().toISOString(),
+      comments: [],
     });
   };
 
   return (
     <div className="createPostJS">
-      <button className="sendbtN" onClick={checkMegirl}>
-        Publish Post
-      </button>
       <div className="crPostTop">
         <div className="postForm">
           <label>Title</label>
           <input type="text" onChange={handleEditorChangeTitle} />
+          {titleErr && <p style={{ color: "red" }}>{titleErr}</p>}
           <label>From</label>
           <input type="text" onChange={handleEditorChangeName} />
 
-          {error && <p style={{ color: "red" }}>{error}</p>}
+          {nameErr && <p style={{ color: "red" }}>{nameErr}</p>}
         </div>
         <div className="uploaderA">
           <input type="file" onChange={handleFileChange} />
@@ -147,21 +159,25 @@ const CreatePost = () => {
                   width: progress + "%",
                   backgroundColor: "#538d22",
                 }}
-                transition={{ duration: 1 }}
+                transition={{ duration: 0.5 }}
               ></motion.div>
             )}
-
-            {fileErr && <span style={{ color: "red" }}>{fileErr}</span>}
           </div>
-
+          {fileErr && <span style={{ color: "red" }}>{fileErr}</span>}
+          <span
+            style={{ color: "#538d22", fontSize: "35px", textAlign: "center" }}
+          >
+            {progress === 100 && <BsCheckCircle />}
+          </span>
           <div className="imageUploaded">
             {url && <img src={url} alt={url} />}
           </div>
+          <button className="sendbtN" onClick={checkMegirl}>
+            Publish Post
+          </button>
         </div>
-        <span style={{ color: "red", fontSize: "35px" }}>
-          {progress === 100 && <GrStatusGood />}
-        </span>
       </div>
+      {textErr && <p style={{ color: "red" }}>{textErr}</p>}
 
       <Editor
         initialValue=""
