@@ -7,8 +7,9 @@
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  margin-top: -200px;
+  margin-top: -150px;
   font-family: "Montserrat", sans-serif;
+  overflow: hidden;
 }
 
 .imageContLogin {
@@ -18,6 +19,8 @@
   position: relative;
   overflow: hidden;
   width: 500px;
+  max-height: 500px;
+  overflow: hidden;
   margin: 0 auto;
   background-color: #ffffff;
   display: -webkit-box;
@@ -233,5 +236,34 @@
 
 .containerLogin .regbtn:hover {
   background-color: #fc788c;
+}
+
+.containerLogin .resetbtn {
+  border-radius: 20px;
+  border: none;
+  padding: 10px;
+  margin-left: 2px;
+  background-color: #ceb942;
+  color: #ffffff;
+  font-size: 12px;
+  font-weight: bold;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
+  cursor: pointer;
+}
+
+.containerLogin .resetbtn:active {
+  -webkit-transform: scale(0.95);
+          transform: scale(0.95);
+}
+
+.containerLogin .resetbtn:focus {
+  outline: none;
+}
+
+.containerLogin .resetbtn:hover {
+  background-color: #f59a12;
 }
 /*# sourceMappingURL=Login.css.map */

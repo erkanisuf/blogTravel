@@ -18,30 +18,6 @@
   font-family: "PT Sans Narrow", sans-serif;
 }
 
-.ContainerAllPost .filterButtons {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: end;
-      -ms-flex-pack: end;
-          justify-content: flex-end;
-  -ms-flex-item-align: end;
-      align-self: flex-end;
-}
-
-.ContainerAllPost .filterButtons span {
-  cursor: pointer;
-  padding-right: 2px;
-  margin: 0 5px;
-  color: #538d22;
-  font-weight: 550;
-  letter-spacing: 0.5px;
-}
-
-.ContainerAllPost .filterButtons span:hover {
-  text-decoration: underline;
-}
-
 .ContainerAllPost .flexAllPost {
   width: 100%;
   display: -webkit-box;
@@ -146,4 +122,4 @@
 .ContainerAllPost .flexAllPost .flexLikesComments span {
   margin-right: 5px;
 }
-/*# sourceMappingURL=AllPost.css.map */
+/*# sourceMappingURL=UserFavorites.css.map */

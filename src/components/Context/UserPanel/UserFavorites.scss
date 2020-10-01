@@ -12,23 +12,6 @@ $grey: rgba(135, 138, 140, 0.5);
   margin: 0 auto;
   height: 100%;
   font-family: "PT Sans Narrow", sans-serif;
-  .filterButtons {
-    display: flex;
-    justify-content: flex-end;
-    align-self: flex-end;
-    span {
-      cursor: pointer;
-      padding-right: 2px;
-      margin: 0 5px;
-      color: #538d22;
-      font-weight: 550;
-      letter-spacing: 0.5px;
-
-      &:hover {
-        text-decoration: underline;
-      }
-    }
-  }
 
   .flexAllPost {
     width: 100%;

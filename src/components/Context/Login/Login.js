@@ -1,12 +1,15 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { auth } from "../../../firebase/firebase";
+import firebase from "firebase";
 
 import "./Login.css";
 const Login = () => {
   const [email, setEmail] = useState("");
+  const [forgetPass, setforgetPass] = useState("");
   const [password, setPassword] = useState("");
   const [errorMsg, seterrorMsg] = useState("");
+  const [togglee, setToglee] = useState(false);
   const navigate = useNavigate();
 
   const register = (e) => {
@@ -34,6 +37,16 @@ const Login = () => {
       .catch((err) => seterrorMsg(err));
   };
 
+  const resetPasw = () => {
+    firebase
+      .auth()
+      .sendPasswordResetEmail(forgetPass)
+      .then((auth) => {
+        console.log(auth);
+        console.log("check email");
+      })
+      .catch((err) => seterrorMsg(err));
+  };
   return (
     <div className="containerMain">
       <div className="imageContLogin">
@@ -63,10 +76,35 @@ const Login = () => {
             <button className="regbtn" type="submit" onClick={register}>
               Create Account
             </button>
+
             {/* <button type="submit" onClick={signOut}>
             Sign Out
           </button> */}
           </div>
+          <span
+            style={{
+              color: "black",
+              cursor: "pointer",
+              margin: "15px",
+              fontWeight: "900",
+            }}
+            onClick={() => setToglee(!togglee)}
+          >
+            Forgot password??
+          </span>
+          {togglee && (
+            <div>
+              Email:
+              <input
+                type="text"
+                value={forgetPass}
+                onChange={(e) => setforgetPass(e.target.value)}
+              />
+              <button className="resetbtn" type="submit" onClick={resetPasw}>
+                Confirm reset
+              </button>
+            </div>
+          )}
         </form>
       </div>
     </div>

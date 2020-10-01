@@ -3,8 +3,9 @@
   min-height: 800px;
   display: flex;
   align-items: center;
-  margin-top: -200px;
+  margin-top: -150px;
   font-family: "Montserrat", sans-serif;
+  overflow: hidden;
 }
 .imageContLogin {
   background-color: #fff;
@@ -14,7 +15,8 @@
   position: relative;
   overflow: hidden;
   width: 500px;
-
+  max-height: 500px;
+  overflow: hidden;
   margin: 0 auto;
 
   background-color: #ffffff;
@@ -46,6 +48,7 @@
   position: relative;
   overflow: hidden;
   width: 300px;
+
   margin: 0 auto;
   background-color: #ffffff;
   display: flex;
@@ -184,6 +187,33 @@
 
     &:hover {
       background-color: #fc788c;
+    }
+  }
+
+  .resetbtn {
+    border-radius: 20px;
+    border: none;
+    padding: 10px;
+    margin-left: 2px;
+    background-color: #ceb942;
+    color: #ffffff;
+    font-size: 12px;
+    font-weight: bold;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    transition: 0.5s;
+    cursor: pointer;
+
+    &:active {
+      transform: scale(0.95);
+    }
+
+    &:focus {
+      outline: none;
+    }
+
+    &:hover {
+      background-color: #f59a12;
     }
   }
 }

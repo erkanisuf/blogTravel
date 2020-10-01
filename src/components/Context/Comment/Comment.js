@@ -30,6 +30,7 @@ const Comment = ({ copyofBlogsArrDetail, useremail, avatar, loggedIn }) => {
         ? copyofBlogsArrDetail.comments.map((key, index) => {
             return (
               <div key={index}>
+                <img src={key.avatar} alt={index} />
                 <p>{key.text}</p>
                 <p>{key.email}</p>
               </div>
@@ -44,7 +45,9 @@ const Comment = ({ copyofBlogsArrDetail, useremail, avatar, loggedIn }) => {
             value={textareavalue}
             onChange={textareahandleChange}
           />
-          <button onClick={sendToFireBase}>Comment</button>
+          <button type="submit" onClick={sendToFireBase}>
+            Comment
+          </button>
         </div>
       ) : (
         "Log in To Comment"

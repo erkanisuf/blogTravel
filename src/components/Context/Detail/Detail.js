@@ -39,7 +39,14 @@ const Detail = () => {
       return el.id === useremail;
     });
     const avatar = { ...findArrofFavs };
-    setAvatar(avatar.avatar);
+    if (avatar.avatar) {
+      setAvatar(avatar.avatar);
+    } else {
+      setAvatar(
+        "https://www.pngkey.com/png/full/115-1150152_default-profile-picture-avatar-png-green.png"
+      );
+    }
+
     if (findArrofFavs) {
       const copyofFindedEl = { ...findArrofFavs };
       const copyofFavPost = copyofFindedEl.favoritePost;

@@ -1,0 +1,124 @@
+@import url("https://fonts.googleapis.com/css2?family=PT+Sans+Narrow&display=swap");
+.createPostJS {
+  width: 70%;
+  margin: 0 auto;
+  font-family: "PT Sans Narrow", sans-serif;
+}
+
+.createPostJS .crPostTop {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: space-evenly;
+      -ms-flex-pack: space-evenly;
+          justify-content: space-evenly;
+  margin: 25px;
+}
+
+.createPostJS .crPostTop .uploaderA {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  margin-top: 20px;
+}
+
+.createPostJS .crPostTop .uploaderA .progress-bar {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  font-size: 35px;
+  border: 1px solid rgba(146, 145, 145, 0.521);
+  width: 100%;
+  height: 10px;
+  margin: 0 auto;
+  background-color: #e3e6e4;
+  padding: 6px;
+  padding-bottom: 10px;
+  border-radius: 3px;
+  -webkit-box-shadow: inset 0 1px 3px rgba(121, 119, 119, 0.2);
+          box-shadow: inset 0 1px 3px rgba(121, 119, 119, 0.2);
+}
+
+.createPostJS .crPostTop .uploaderA .progress-barfill {
+  width: 100%;
+  padding: 5px 0;
+  margin: 0 auto;
+  border-radius: 30px;
+  background: rgba(0, 0, 0, 0.25);
+  -webkit-box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.25), 0 1px rgba(255, 255, 255, 0.08);
+          box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.25), 0 1px rgba(255, 255, 255, 0.08);
+  height: 5px;
+  border-radius: 30px;
+  background-image: -webkit-gradient(linear, left top, left bottom, from(rgba(255, 255, 255, 0.3)), to(rgba(255, 255, 255, 0.05)));
+  background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0.05));
+}
+
+.createPostJS .crPostTop .uploaderA .imageUploaded {
+  margin: 10px;
+}
+
+.createPostJS .crPostTop .uploaderA .imageUploaded img {
+  max-width: 300px;
+  max-height: 250px;
+  -o-object-fit: contain;
+     object-fit: contain;
+}
+
+.createPostJS .crPostTop input {
+  outline: none;
+  border: 1px solid rgba(135, 138, 140, 0.5);
+  border-radius: 5px;
+  height: 30px;
+  width: 100%;
+  padding: 5px;
+}
+
+.createPostJS .crPostTop .postForm {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  width: 50%;
+}
+
+.createPostJS .sendbtN {
+  width: 100%;
+  border-radius: 20px;
+  border: none;
+  padding: 15px 0;
+  background-color: #d8cb1d;
+  color: #ffffff;
+  font-size: 12px;
+  font-weight: bold;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
+  cursor: pointer;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.createPostJS .sendbtN:hover {
+  background-color: #67b427;
+}
+/*# sourceMappingURL=EditPost.css.map */

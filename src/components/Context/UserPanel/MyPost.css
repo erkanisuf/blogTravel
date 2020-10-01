@@ -18,30 +18,6 @@
   font-family: "PT Sans Narrow", sans-serif;
 }
 
-.ContainerAllPost .filterButtons {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: end;
-      -ms-flex-pack: end;
-          justify-content: flex-end;
-  -ms-flex-item-align: end;
-      align-self: flex-end;
-}
-
-.ContainerAllPost .filterButtons span {
-  cursor: pointer;
-  padding-right: 2px;
-  margin: 0 5px;
-  color: #538d22;
-  font-weight: 550;
-  letter-spacing: 0.5px;
-}
-
-.ContainerAllPost .filterButtons span:hover {
-  text-decoration: underline;
-}
-
 .ContainerAllPost .flexAllPost {
   width: 100%;
   display: -webkit-box;
@@ -146,4 +122,58 @@
 .ContainerAllPost .flexAllPost .flexLikesComments span {
   margin-right: 5px;
 }
-/*# sourceMappingURL=AllPost.css.map */
+
+.ContainerAllPost .flexAllPost .deleteandEdit {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
+  font-size: 18px;
+  padding: 0 5px 3px 0;
+  margin-right: 5px;
+}
+
+.ContainerAllPost .flexAllPost .deleteandEdit .dltbtn {
+  background-color: #d63030;
+  outline: none;
+  border: none;
+  border-radius: 5px;
+  margin: 5px;
+  padding: 5px;
+  color: white;
+  font-size: 10px;
+  -webkit-transition: 1s;
+  transition: 1s;
+}
+
+.ContainerAllPost .flexAllPost .deleteandEdit .dltbtn:hover {
+  cursor: pointer;
+  -webkit-transform: scale(1.1);
+          transform: scale(1.1);
+}
+
+.ContainerAllPost .flexAllPost .deleteandEdit .edtbtn {
+  background-color: #b1961f;
+  outline: none;
+  border: none;
+  border-radius: 5px;
+  margin: 5px;
+  padding: 5px;
+  color: white;
+  font-size: 10px;
+  -webkit-transition: 1s;
+  transition: 1s;
+}
+
+.ContainerAllPost .flexAllPost .deleteandEdit .edtbtn:hover {
+  cursor: pointer;
+  -webkit-transform: scale(1.1);
+          transform: scale(1.1);
+}
+/*# sourceMappingURL=MyPost.css.map */

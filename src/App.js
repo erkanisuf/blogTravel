@@ -10,6 +10,8 @@ import Detail from "./components/Context/Detail/Detail";
 import AllPost from "./components/Context/AllPost/AllPost";
 import UserPanel from "./components/Context/UserPanel/UserPanel";
 import EditPost from "./components/Context/UserPanel/EditPost";
+import MyPost from "./components/Context/UserPanel/MyPost";
+import UserFavorites from "./components/Context/UserPanel/UserFavorites";
 import { BlogContext } from "./components/Context/Context/BlogContext";
 import PrivateRouter from "./PrivateRouter";
 
@@ -21,7 +23,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Main />} />
         <Route path="detail/:id" element={<Detail />} />
-        <Route path="detail/:id/editpost/" element={<EditPost />} />
+
         <Route path="login/" element={<Login />} />
         <Route path="allpost/" element={<AllPost />} />
 
@@ -35,6 +37,24 @@ function App() {
           isAuth={loggedIn}
           path="createpost/"
           component={CreatePost}
+          redirectTo="/login"
+        />
+        <PrivateRouter
+          isAuth={loggedIn}
+          path="userpanel/userfavorites/"
+          component={UserFavorites}
+          redirectTo="/login"
+        />
+        <PrivateRouter
+          isAuth={loggedIn}
+          path="userpanel/myposts/"
+          component={MyPost}
+          redirectTo="/login"
+        />
+        <PrivateRouter
+          isAuth={loggedIn}
+          path="detail/:id/editpost/"
+          component={EditPost}
           redirectTo="/login"
         />
       </Routes>

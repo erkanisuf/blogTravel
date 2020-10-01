@@ -12,23 +12,6 @@ $grey: rgba(135, 138, 140, 0.5);
   margin: 0 auto;
   height: 100%;
   font-family: "PT Sans Narrow", sans-serif;
-  .filterButtons {
-    display: flex;
-    justify-content: flex-end;
-    align-self: flex-end;
-    span {
-      cursor: pointer;
-      padding-right: 2px;
-      margin: 0 5px;
-      color: #538d22;
-      font-weight: 550;
-      letter-spacing: 0.5px;
-
-      &:hover {
-        text-decoration: underline;
-      }
-    }
-  }
 
   .flexAllPost {
     width: 100%;
@@ -97,6 +80,48 @@ $grey: rgba(135, 138, 140, 0.5);
       margin-right: 5px;
       span {
         margin-right: 5px;
+      }
+    }
+    .deleteandEdit {
+      display: flex;
+
+      flex-direction: row;
+      justify-content: flex-end;
+
+      font-size: 18px;
+      padding: 0 5px 3px 0;
+      margin-right: 5px;
+      .dltbtn {
+        background-color: #d63030;
+        outline: none;
+        border: none;
+        border-radius: 5px;
+        margin: 5px;
+        padding: 5px;
+        color: white;
+        font-size: 10px;
+        transition: 1s;
+
+        &:hover {
+          cursor: pointer;
+          transform: scale(1.1);
+        }
+      }
+      .edtbtn {
+        background-color: #b1961f;
+        outline: none;
+        border: none;
+        border-radius: 5px;
+        margin: 5px;
+        padding: 5px;
+        color: white;
+        font-size: 10px;
+        transition: 1s;
+
+        &:hover {
+          cursor: pointer;
+          transform: scale(1.1);
+        }
       }
     }
   }
