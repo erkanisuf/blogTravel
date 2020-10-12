@@ -56,20 +56,6 @@ const UserImage = ({ useremail, favorites, setAvatar, blogs }) => {
       uploadtoStorage(file);
     }
   }, [file]);
-  // references
-
-  //   const checkMegirl = () => {
-  //     if (valuetext === "" || valuetitle === "" || valuename === "") {
-  //       alert("FIll all areas");
-  //       return false;
-  //     }
-  //     if (blogs.find(isMatchingTitle)) {
-  //       alert("choose diffrent title");
-  //     } else {
-  //       sendToFireBase();
-  //       navigate("/");
-  //     }
-  //   };
 
   const sendToFireBase = () => {
     db.collection("favoritePost").doc(useremail).update({

@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { BlogContext } from "../components/Context/Context/BlogContext";
 import { auth } from "../firebase/firebase";
@@ -9,11 +9,16 @@ import "./Layout.css";
 import { GiEarthAfricaEurope } from "react-icons/gi";
 import { FaUser } from "react-icons/fa";
 import { ImExit } from "react-icons/im";
+import { AiOutlineDown } from "react-icons/ai";
+import { AiFillCaretUp } from "react-icons/ai";
+
+import UserPanel from "../components/Context/UserPanel/UserPanel";
 
 function Layout(props) {
   const { valueTwo, valueThree } = useContext(BlogContext);
   const [loggedIn, setloggedIn] = valueTwo;
   const [, setuserId] = valueThree;
+  const [toggle, setToggle] = useState(false);
   const navigate = useNavigate();
 
   const signOut = (e) => {
@@ -58,16 +63,17 @@ function Layout(props) {
 
           <span className="loginBar">
             {loggedIn ? (
-              <div>
-                <p onClick={signOut}>
+              <div className="trybeRelative">
+                <span onClick={signOut} style={{ marginBottom: "5px" }}>
                   <ImExit /> Sign Out
-                </p>
-                <Link
-                  to="userpanel/"
-                  style={{ textDecoration: "none", color: "black" }}
-                >
-                  <p>User Panel </p>
-                </Link>
+                </span>
+
+                <span onClick={() => setToggle(!toggle)}>
+                  {!toggle ? <AiOutlineDown /> : <AiFillCaretUp />}
+                  User Panel{" "}
+                </span>
+
+                {toggle && <UserPanel />}
               </div>
             ) : (
               <Link

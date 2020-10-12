@@ -10,10 +10,8 @@ import "./EditPost.css";
 import { BsCheckCircle } from "react-icons/bs";
 
 const CreatePost = () => {
-  const { valueOne, valueThree, valueFour } = useContext(BlogContext);
+  const { valueOne } = useContext(BlogContext);
   const [blogs] = valueOne;
-  const [useremail] = valueFour;
-  const [userid] = valueThree;
   const { id } = useParams();
   const linkData = id;
   console.log("lik data", linkData);
@@ -40,29 +38,29 @@ const CreatePost = () => {
 
   const navigate = useNavigate();
 
-  const uploadtoStorage = (file) => {
-    const storageRef = storageFB.ref(file.name);
-    storageRef.put(file).on(
-      "state_changed",
-      (snap) => {
-        let percentage = (snap.bytesTransferred / snap.totalBytes) * 100;
-        setProgress(percentage);
-      },
-      (err) => {
-        setError(err);
-      },
-      async () => {
-        const url = await storageRef.getDownloadURL();
-        setUrl(url);
-      }
-    );
-  };
-
   useEffect(() => {
+    const uploadtoStorage = (file) => {
+      const storageRef = storageFB.ref(file.name);
+      storageRef.put(file).on(
+        "state_changed",
+        (snap) => {
+          let percentage = (snap.bytesTransferred / snap.totalBytes) * 100;
+          setProgress(percentage);
+        },
+        (err) => {
+          setError(err);
+          console.log(error);
+        },
+        async () => {
+          const url = await storageRef.getDownloadURL();
+          setUrl(url);
+        }
+      );
+    };
     if (file) {
       uploadtoStorage(file);
     }
-  }, [file]);
+  }, [file, error]);
   // references
 
   const handleEditorChange = (e) => {
@@ -87,10 +85,6 @@ const CreatePost = () => {
       setFileErr("Img Format - image/png or  image/jpeg ");
     }
   };
-
-  function isMatchingTitle(element) {
-    return element.title === valuetitle;
-  }
 
   const checkMegirl = () => {
     if (valuetext === "" || valuetext.length < 12) {

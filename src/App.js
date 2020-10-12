@@ -12,6 +12,7 @@ import UserPanel from "./components/Context/UserPanel/UserPanel";
 import EditPost from "./components/Context/UserPanel/EditPost";
 import MyPost from "./components/Context/UserPanel/MyPost";
 import UserFavorites from "./components/Context/UserPanel/UserFavorites";
+import Settings from "./components/Context/UserPanel/Settings";
 import { BlogContext } from "./components/Context/Context/BlogContext";
 import PrivateRouter from "./PrivateRouter";
 
@@ -29,25 +30,19 @@ function App() {
 
         <PrivateRouter
           isAuth={loggedIn}
-          path="userpanel/"
-          component={UserPanel}
-          redirectTo="/login"
-        />
-        <PrivateRouter
-          isAuth={loggedIn}
           path="createpost/"
           component={CreatePost}
           redirectTo="/login"
         />
         <PrivateRouter
           isAuth={loggedIn}
-          path="userpanel/userfavorites/"
+          path="/userfavorites/"
           component={UserFavorites}
           redirectTo="/login"
         />
         <PrivateRouter
           isAuth={loggedIn}
-          path="userpanel/myposts/"
+          path="/myposts/"
           component={MyPost}
           redirectTo="/login"
         />
@@ -55,6 +50,12 @@ function App() {
           isAuth={loggedIn}
           path="detail/:id/editpost/"
           component={EditPost}
+          redirectTo="/login"
+        />
+        <PrivateRouter
+          isAuth={loggedIn}
+          path="/settings/"
+          component={Settings}
           redirectTo="/login"
         />
       </Routes>
