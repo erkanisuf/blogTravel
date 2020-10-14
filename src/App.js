@@ -8,7 +8,7 @@ import CreatePost from "./components/Context/CreatePost/CreatePost";
 import Login from "./components/Context/Login/Login";
 import Detail from "./components/Context/Detail/Detail";
 import AllPost from "./components/Context/AllPost/AllPost";
-import UserPanel from "./components/Context/UserPanel/UserPanel";
+
 import EditPost from "./components/Context/UserPanel/EditPost";
 import MyPost from "./components/Context/UserPanel/MyPost";
 import UserFavorites from "./components/Context/UserPanel/UserFavorites";
@@ -27,6 +27,8 @@ function App() {
 
         <Route path="login/" element={<Login />} />
         <Route path="allpost/" element={<AllPost />} />
+
+        
 
         <PrivateRouter
           isAuth={loggedIn}

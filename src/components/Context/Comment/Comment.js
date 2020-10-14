@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import { db } from "../../../firebase/firebase";
 import firebase from "firebase";
+import './Comment.css'
+import Moment from "react-moment";
 
 const Comment = ({ copyofBlogsArrDetail, useremail, avatar, loggedIn }) => {
   const [textareavalue, settextareavalue] = useState("");
@@ -25,20 +27,25 @@ const Comment = ({ copyofBlogsArrDetail, useremail, avatar, loggedIn }) => {
   ///////////////////////UPDATES FIREBAS EARRAY
 
   return (
-    <div>
+    <div className='CommentBox'>
       {copyofBlogsArrDetail.comments.length > 0
         ? copyofBlogsArrDetail.comments.map((key, index) => {
             return (
-              <div key={index}>
+              <div className='thecommentS' key={index}>
                 <img src={key.avatar} alt={index} />
+                <div>
+                <span style={{fontStyle:'italic',color:'rgba(133, 133, 133, 0.9)'}} >{key.email}</span>
+                <Moment style={{float:'right',fontStyle:'italic',color:'rgba(133, 133, 133, 0.9)'}} format="YYYY/MM/DD">{key.date}</Moment>
                 <p>{key.text}</p>
-                <p>{key.email}</p>
+                
+                </div>
+                
               </div>
             );
           })
         : "No comments yet, Be the firs to comment"}
       {loggedIn ? (
-        <div>
+        <div className='writeComment'>
           <label>Text Area</label>
           <textarea
             name="textarea"

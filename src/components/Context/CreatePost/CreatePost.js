@@ -138,7 +138,7 @@ const CreatePost = () => {
       <div className="crPostTop">
         <div className="postForm">
           <label>Title</label>
-          <input type="text" onChange={handleEditorChangeTitle} />
+          <input type="text" onChange={handleEditorChangeTitle} maxLength="20"/>
           {titleErr && <p style={{ color: "red" }}>{titleErr}</p>}
           <label>From</label>
           <input type="text" onChange={handleEditorChangeName} />
@@ -196,7 +196,7 @@ const CreatePost = () => {
             "insertdatetime media table paste wordcount",
           ],
           toolbar:
-            "undo redo | formatselect | bold italic | alignleft aligncenter alignright | bullist numlist outdent indent | image  | help",
+            "undo redo | formatselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | image  | help",
         }}
         onChange={handleEditorChange}
       />

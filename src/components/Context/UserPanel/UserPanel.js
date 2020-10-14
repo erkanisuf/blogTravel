@@ -1,19 +1,27 @@
 import React, { useContext, useState, useEffect } from "react";
 import { BlogContext } from "../Context/BlogContext";
 import "./UserPanel.css";
-import { Link } from "react-router-dom";
+import { ImExit } from "react-icons/im";
+
+import { AiOutlineSetting} from "react-icons/ai";
+import { Link, useNavigate } from "react-router-dom";
+import { auth } from "../../../firebase/firebase";
 const UserPanel = () => {
-  const { valueOne, valueFour, valueSix } = useContext(BlogContext);
+  const { valueOne, valueTwo, valueThree, valueFour, valueSix } = useContext(
+    BlogContext
+  );
   const [blogs] = valueOne;
 
   const [useremail] = valueFour;
 
   const [favorites] = valueSix;
-
+  const noimage= require('../../../images/115-1150152_default-profile-picture-avatar-png-green.png')
   const [avatar, setAvatar] = useState(null);
   const [mypostLength, setmypostLength] = useState(0);
   const [myfavLength, setmyfavLength] = useState(0);
-
+  const [, setloggedIn] = valueTwo;
+  const [, setuserId] = valueThree;
+  const navigate = useNavigate();
   useEffect(() => {
     const checkuserAndPost = () => {
       let favK = favorites.find((el) => {
@@ -46,21 +54,42 @@ const UserPanel = () => {
     findLength();
   }, [favorites, blogs, useremail]);
 
+  const signOut = (e) => {
+    e.preventDefault();
+    setuserId(null);
+    setloggedIn(false);
+    auth.signOut();
+    navigate("/");
+  };
+
   return (
     <div className="userPanel">
-      {avatar && <img src={avatar} alt={avatar} />}
-      <Link
-        style={{ textDecoration: "none", color: "black" }}
-        to="userfavorites/"
+      
+      <div className="imgLoggedAs">
+        <p>Logged as {useremail}</p>
+        {avatar ? <img src={avatar} alt={avatar} /> : <img src={noimage} alt={noimage} /> }
+      </div>
+      <div className="menuUserBar">
+        <Link
+          style={{ textDecoration: "none", color: "black" }}
+          to="userfavorites/"
+        >
+          <p>My Favorite Posts: {myfavLength} </p>
+        </Link>
+        <Link style={{ textDecoration: "none", color: "black" }} to="settings/">
+          <p>Settings  <AiOutlineSetting /></p>
+        </Link>
+        <Link style={{ textDecoration: "none", color: "black" }} to="myposts/">
+          <p>My Posts: {mypostLength.length}</p>
+        </Link>
+      </div>
+
+      <span
+        onClick={signOut}
+        style={{ marginBottom: "5px", float: "right", color: "#d63030" }}
       >
-        <p>My Favorite Posts{myfavLength} </p>
-      </Link>
-      <Link style={{ textDecoration: "none", color: "black" }} to="settings/">
-        <p>Settings</p>
-      </Link>
-      <Link style={{ textDecoration: "none", color: "black" }} to="myposts/">
-        <p>My Posts {mypostLength.length}</p>
-      </Link>
+        <ImExit /> Sign Out
+      </span>
     </div>
   );
 };

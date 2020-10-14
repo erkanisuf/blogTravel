@@ -1,0 +1,67 @@
+.CommentBox {
+  width: 100%;
+  display: flex;
+  flex-direction: column-reverse;
+  justify-content: space-between;
+}
+
+.CommentBox img {
+  width: 50px;
+  height: 50px;
+  object-fit: cover;
+  object-position: center;
+  border: 1px solid #538d22;
+  padding: 5px;
+  border-radius: 50%;
+  margin: 0 auto;
+  align-self: center;
+}
+
+.thecommentS {
+  width: 100%;
+  margin: 5px 0;
+  padding: 5px 0;
+
+  border-bottom: 1px solid rgba(133, 133, 133, 0.5);
+}
+
+.thecommentS img {
+  float: left;
+  margin-right: 10px;
+  align-self: center;
+  justify-self: center;
+}
+
+.writeComment {
+  width: 100%;
+  margin: 15px 0;
+}
+
+.writeComment textarea {
+  width: 100%;
+  height: 50px;
+  border-radius: 5px;
+}
+.writeComment textarea:focus {
+  outline: none;
+}
+
+.writeComment button {
+  border-radius: 0px;
+  border: none;
+  padding: 10px;
+
+  margin-left: 2px;
+  background-color: #67b427;
+  border-radius: 5px;
+  padding-right: 5px;
+  float: right;
+  color: #ffffff;
+  font-size: 12px;
+  font-weight: bold;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  transition: 0.5s;
+  cursor: pointer;
+  position: relative;
+}

@@ -43,7 +43,7 @@ export const BlogProvider = (props) => {
   }, [userid]);
 
   useEffect(() => {
-    const unsub = db.collection("favoritePost").onSnapshot((snapshot) => {
+    const unsub = db.collection("Users").onSnapshot((snapshot) => {
       const allPost = snapshot.docs.map((doc) => ({
         id: doc.id,
         ...doc.data(),

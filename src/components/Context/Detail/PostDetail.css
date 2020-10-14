@@ -13,8 +13,8 @@
 
 .containerPostDetail .titleheader {
   -ms-grid-column: 1;
-  -ms-grid-column-span: 3;
-  grid-column: 1/4;
+  -ms-grid-column-span: 2;
+  grid-column: 1/3;
   -ms-grid-row: 1;
   -ms-grid-row-span: 1;
   grid-row: 1/2;
@@ -45,9 +45,9 @@
 }
 
 .containerPostDetail .imgheader {
-  -ms-grid-column: 2;
-  -ms-grid-column-span: 1;
-  grid-column: 2/3;
+  -ms-grid-column: 1;
+  -ms-grid-column-span: 2;
+  grid-column: 1/3;
   -ms-grid-row: 2;
   -ms-grid-row-span: 1;
   grid-row: 2/3;
@@ -64,8 +64,8 @@
 
 .containerPostDetail .themaintext {
   -ms-grid-column: 1;
-  -ms-grid-column-span: 3;
-  grid-column: 1/4;
+  -ms-grid-column-span: 2;
+  grid-column: 1/3;
   -ms-grid-row: 3;
   -ms-grid-row-span: 1;
   grid-row: 3/4;
@@ -87,11 +87,14 @@
 
 .containerPostDetail .btnandcomment {
   -ms-grid-column: 1;
-  -ms-grid-column-span: 3;
-  grid-column: 1/4;
-  grid-row: 4 / auto;
+  -ms-grid-column-span: 2;
+  grid-column: 1/3;
+  -ms-grid-row: 4;
+  -ms-grid-row-span: 1;
+  grid-row: 4 / 5;
   width: 100%;
   margin: 0 auto;
+  margin-bottom: 100px;
 }
 
 .containerPostDetail .btnopen {
@@ -107,5 +110,37 @@
   font-size: 25px;
   cursor: pointer;
   margin-right: 5px;
+}
+
+.containerPostDetail .btnFav {
+  border-radius: 0px;
+  border: none;
+  padding: 10px;
+  padding-right: 25px;
+  margin-left: 2px;
+  color: #ffffff;
+  font-size: 12px;
+  font-weight: bold;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
+  cursor: pointer;
+  position: relative;
+}
+
+.containerPostDetail .btnFav span {
+  position: absolute;
+  font-size: 20px;
+  top: 5px;
+}
+
+.containerPostDetail .btnFav:active {
+  -webkit-transform: scale(0.95);
+          transform: scale(0.95);
+}
+
+.containerPostDetail .btnFav:focus {
+  outline: none;
 }
 /*# sourceMappingURL=PostDetail.css.map */

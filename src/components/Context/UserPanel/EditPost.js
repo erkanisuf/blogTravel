@@ -170,7 +170,7 @@ const CreatePost = () => {
           <div className="imageUploaded">
             {url && <img src={url} alt={url} />}
           </div>
-          <button className="sendbtN" onClick={checkMegirl}>
+          <button className="sendbtNedit" onClick={checkMegirl}>
             Edit Post
           </button>
         </div>
@@ -194,7 +194,7 @@ const CreatePost = () => {
             "insertdatetime media table paste wordcount",
           ],
           toolbar:
-            "undo redo | formatselect | bold italic | alignleft aligncenter alignright | bullist numlist outdent indent | image  | help",
+            "undo redo | formatselect | bold italic | alignleft aligncenter alignright alignjustify| bullist numlist outdent indent | image  | help",
         }}
         onChange={handleEditorChange}
       />

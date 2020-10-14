@@ -1,0 +1,45 @@
+$grey: rgba(133, 133, 133, 0.5);
+.randomPosts {
+  width: 100%;
+  grid-column: 3;
+  grid-row: 2/3;
+  margin-left: 25px;
+
+  display: flex;
+  flex-direction: column;
+  align-content: center;
+  justify-content: space-evenly;
+  color: black;
+  img {
+    width: 80px;
+    max-width: 80px;
+    height: 80px;
+    max-height: 80px;
+    object-fit: cover;
+    object-position: center;
+    border: 1px solid #538d22;
+    padding: 5px;
+    border-radius: 50%;
+    align-self: center;
+    overflow: hidden;
+  }
+  .randomBoxes {
+    width: 80%;
+    margin: 5px 0;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    border-bottom: 1px solid $grey;
+    padding-bottom: 5px;
+    .textandComm {
+      font-size: 20px;
+      width: 100%;
+      margin-left: 10px;
+    }
+    span {
+      font-size: 15px;
+      color: $grey;
+      float: right;
+    }
+  }
+}

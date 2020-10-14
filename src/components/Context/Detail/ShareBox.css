@@ -1,0 +1,13 @@
+.shareIcons {
+  width: 100%;
+  grid-column: 3;
+  grid-row: 3/4;
+  margin-top: 100px;
+  display: flex;
+  flex-direction: row;
+  align-content: center;
+  justify-content: space-around;
+
+  color: black;
+  width: 80%;
+}

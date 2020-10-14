@@ -1,19 +1,29 @@
 .userPanel {
-  background-color: snow;
-  width: 250px;
-  height: 100px;
+  background-color: white;
   position: absolute;
   border: 1px solid rgba(135, 138, 140, 0.5);
-  border-radius: 20px;
-  padding: 10px 15px 55px 15px;
-  top: 39px;
-  right: -15px;
-  margin: 5px;
+  border-radius: 10px;
+  padding: 10px;
+  top: 25px;
+  right: -25px;
+  margin: 0 auto;
   z-index: 5;
+  outline: none;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  width: 300px;
+  max-width: 480px;
+  max-height: 642px;
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
   color: black;
   -webkit-box-shadow: 5px 5px 5px rgba(68, 68, 68, 0.6);
           box-shadow: 5px 5px 5px rgba(68, 68, 68, 0.6);
@@ -21,11 +31,46 @@
   transition: 0.5s;
 }
 
-.userPanel img {
-  max-width: 100px;
-  -o-object-fit: contain;
-     object-fit: contain;
-  border: 1px solid rgba(135, 138, 140, 0.5);
+.userPanel .imgLoggedAs {
+  width: 80%;
+  -ms-flex-item-align: center;
+      align-self: center;
+  margin: 0 auto;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  text-align: center;
+}
+
+.userPanel .imgLoggedAs img {
+  width: 100px;
+  height: 100px;
+  -o-object-fit: cover;
+     object-fit: cover;
+  -o-object-position: center;
+     object-position: center;
+  border: 1px solid #538d22;
+  padding: 5px;
+  border-radius: 50%;
+  margin: 0 auto;
+  -ms-flex-item-align: center;
+      -ms-grid-row-align: center;
+      align-self: center;
+}
+
+.userPanel .menuUserBar {
+  width: 60%;
+  -ms-flex-item-align: center;
+      -ms-grid-row-align: center;
+      align-self: center;
+  margin: 0 auto;
 }
 
 .userPanel p:hover {

@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useState,useEffect } from "react";
 import { BlogContext } from "../Context/BlogContext";
 import "./Main.css";
 import { Link, Outlet } from "react-router-dom";
@@ -16,23 +16,29 @@ const Main = () => {
   // let [searchParams, setSearchParams] = useSearchParams();
 
   const addMore = () => {
-    setValue(value + 3);
-    showMore();
+    setValue(valueCurrent =>valueCurrent + 3);
+    
   };
 
   const ShowLess = () => {
-    setValue(value - 3);
-    showLezz();
+    setValue(5);
+    
   };
 
-  const showMore = () => {
-    value >= blogs.length - 3 ? setisOpen(false) : setisOpen(true);
-  };
-  const showLezz = () => {
-    if (value <= blogs.length) {
-      setisOpen(true);
-    }
-  };
+  
+
+  useEffect(() => {
+    const showMore = () => {
+      value >= blogs.length  ? setisOpen(false) : setisOpen(true);
+    };
+    const showLezz = () => {
+      if (value <= blogs.length) {
+        setisOpen(true);
+      }
+    };
+    showMore()
+    showLezz()
+  }, [value,blogs.length])
 
   return (
     <div>

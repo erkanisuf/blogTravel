@@ -12,13 +12,38 @@ const Login = () => {
   const [togglee, setToglee] = useState(false);
   const navigate = useNavigate();
 
+
+  // .then(userCredential => {
+
+  //   //set data into User database
+  //   firebase.database().ref('User' + "/" + userCredential.user.uid).set({
+  //     avatar: '',
+  //     favoritePost: [],
+  //     useremail: email,
+  //     userid: userCredential.user.uid,
+  //     likedPost:[],
+  //   })})
+
+  const sendDBUser = (auth) => {
+    firebase.firestore().collection('Users').doc(`${auth.user.email}`).set({
+          avatar: '',
+          favoritePost: [],
+          useremail: auth.user.email,
+          userid: auth.user.uid,
+          likedPost:[],
+        })
+  }
+
   const register = (e) => {
     e.preventDefault();
     auth
       .createUserWithEmailAndPassword(email, password)
       .then((auth) => {
+        
         if (auth) {
-          navigate("/");
+          // navigate("/");
+          console.log(auth)
+          sendDBUser(auth)
         }
       })
       .catch((err) => seterrorMsg(err));
