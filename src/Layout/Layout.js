@@ -7,9 +7,13 @@ import "./Layout.css";
 
 import { GiEarthAfricaEurope } from "react-icons/gi";
 import { FaUser } from "react-icons/fa";
+import { CgClose } from "react-icons/cg";
 
+import { AiFillHome } from "react-icons/ai";
 import { AiOutlineDown } from "react-icons/ai";
 import { AiFillCaretUp } from "react-icons/ai";
+import { IoIosCreate } from "react-icons/io";
+import { BsFilePost } from "react-icons/bs";
 
 import UserPanel from "../components/Context/UserPanel/UserPanel";
 
@@ -33,29 +37,44 @@ function Layout(props) {
           <nav className="navBar">
             <ul>
               <Link to="/" style={{ textDecoration: "none", color: "black" }}>
-                Home
+                <p>
+                  <AiFillHome className="iconsForMenu" />
+                  <span> Home</span>
+                </p>
               </Link>
 
               <Link
                 to="allpost/"
                 style={{ textDecoration: "none", color: "black" }}
               >
-                All Post
+                <p>
+                  <BsFilePost className="iconsForMenu" />
+                  <span> All Post</span>
+                </p>
               </Link>
               <Link
                 to={loggedIn ? "createpost/" : "login/"}
                 style={{ textDecoration: "none", color: "black" }}
               >
-                Create Post
+                <p>
+                  <IoIosCreate className="iconsForMenu" />
+                  <span> Create Post</span>
+                </p>
               </Link>
-              <li>Filter</li>
+              <span
+                style={{ marginTop: "25px" }}
+                className="mobileUser"
+                onClick={() => setToggle(!toggle)}
+              >
+                {toggle ? <CgClose /> : <FaUser />}
+              </span>
             </ul>
           </nav>
-         
+
           <span className="loginBar">
             {loggedIn ? (
               <div className="trybeRelative">
-                <span onClick={() => setToggle(!toggle)}>
+                <span className="deskUser" onClick={() => setToggle(!toggle)}>
                   {!toggle ? <AiOutlineDown /> : <AiFillCaretUp />}
                   User Panel{" "}
                 </span>

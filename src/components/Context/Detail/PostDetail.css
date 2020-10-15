@@ -143,4 +143,40 @@
 .containerPostDetail .btnFav:focus {
   outline: none;
 }
+
+@media only screen and (max-width: 768px) {
+  .containerPostDetail {
+    width: 90%;
+    -ms-grid-columns: 1fr;
+        grid-template-columns: 1fr;
+  }
+  .containerPostDetail .titleheader {
+    -ms-grid-column: 1;
+    grid-column: 1;
+    -ms-grid-row: 1;
+    -ms-grid-row-span: 1;
+    grid-row: 1/2;
+  }
+  .containerPostDetail .imgheader {
+    -ms-grid-column: 1;
+    grid-column: 1;
+    -ms-grid-row: 2;
+    grid-row: 2;
+  }
+  .containerPostDetail .themaintext {
+    -ms-grid-column: 1;
+    grid-column: 1;
+    -ms-grid-row: 3;
+    -ms-grid-row-span: 1;
+    grid-row: 3/4;
+  }
+  .containerPostDetail .btnandcomment {
+    -ms-grid-column: 1;
+    grid-column: 1;
+    -ms-grid-row: 4;
+    -ms-grid-row-span: 1;
+    grid-row: 4 / 5;
+    margin-bottom: 2px;
+  }
+}
 /*# sourceMappingURL=PostDetail.css.map */

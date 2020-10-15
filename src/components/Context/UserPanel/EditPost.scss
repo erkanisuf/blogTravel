@@ -91,3 +91,16 @@
     }
   }
 }
+
+@media only screen and (max-width: 768px) {
+  .createPostJS {
+    width: 100%;
+    margin: 0 auto;
+    .crPostTop {
+      flex-direction: column;
+      .postForm {
+        width: 100%;
+      }
+    }
+  }
+}

@@ -71,10 +71,10 @@ const AllPost = () => {
   return (
     <div className="ContainerAllPost">
       <h1>Allpost</h1>
+      <div style={{ color: "black", fontStyle: "bold", fontWeight: "900" }}>
+        Sort by:
+      </div>
       <div className="filterButtons">
-        <div style={{ color: "black", fontStyle: "bold", fontWeight: "900" }}>
-          Sort by:
-        </div>
         <span onClick={newesttPost}>
           Newsrt
           <MdDateRange />
@@ -116,7 +116,9 @@ const AllPost = () => {
                 </div>
 
                 <div className="theimgCOnt">
-                  <img src={key.image} alt={key.image} />
+                  <div className="theItsImg">
+                    <img src={key.image} alt={key.image} />
+                  </div>
                   <div className="flexImgTitle">
                     <h1 style={{ color: "#538d22" }}>{key.title}</h1>
 

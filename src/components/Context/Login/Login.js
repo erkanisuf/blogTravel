@@ -12,7 +12,6 @@ const Login = () => {
   const [togglee, setToglee] = useState(false);
   const navigate = useNavigate();
 
-
   // .then(userCredential => {
 
   //   //set data into User database
@@ -25,29 +24,27 @@ const Login = () => {
   //   })})
 
   const sendDBUser = (auth) => {
-    firebase.firestore().collection('Users').doc(`${auth.user.email}`).set({
-          avatar: '',
-          favoritePost: [],
-          useremail: auth.user.email,
-          userid: auth.user.uid,
-          likedPost:[],
-        })
-  }
+    firebase.firestore().collection("Users").doc(`${auth.user.email}`).set({
+      avatar: "",
+      favoritePost: [],
+      useremail: auth.user.email,
+      userid: auth.user.uid,
+      likedPost: [],
+    });
+  };
 
   const register = (e) => {
     e.preventDefault();
     auth
       .createUserWithEmailAndPassword(email, password)
       .then((auth) => {
-        
         if (auth) {
-          // navigate("/");
-          console.log(auth)
-          sendDBUser(auth)
+          navigate("/");
+
+          sendDBUser(auth);
         }
       })
       .catch((err) => seterrorMsg(err));
-    console.log("error reg/");
   };
 
   const login = (e) => {
@@ -67,8 +64,7 @@ const Login = () => {
       .auth()
       .sendPasswordResetEmail(forgetPass)
       .then((auth) => {
-        console.log(auth);
-        console.log("check email");
+        seterrorMsg("Please check your email adress.");
       })
       .catch((err) => seterrorMsg(err));
   };

@@ -2,9 +2,9 @@
   width: 100%;
   -ms-grid-column: 3;
   grid-column: 3;
-  -ms-grid-row: 2;
-  -ms-grid-row-span: 1;
-  grid-row: 2/3;
+  -ms-grid-row: 1;
+  -ms-grid-row-span: 2;
+  grid-row: 1/3;
   margin-left: 25px;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -54,6 +54,8 @@
           justify-content: flex-start;
   border-bottom: 1px solid rgba(133, 133, 133, 0.5);
   padding-bottom: 5px;
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
 }
 
 .randomPosts .randomBoxes .textandComm {
@@ -66,5 +68,19 @@
   font-size: 15px;
   color: rgba(133, 133, 133, 0.5);
   float: right;
+}
+
+.randomPosts .randomBoxes:hover {
+  -webkit-transform: scale(1.1);
+          transform: scale(1.1);
+}
+
+@media only screen and (max-width: 768px) {
+  .randomPosts {
+    -ms-grid-column: 1;
+    grid-column: 1;
+    -ms-grid-row: 6;
+    grid-row: 6;
+  }
 }
 /*# sourceMappingURL=RandomPost.css.map */

@@ -10,4 +10,18 @@
 
   color: black;
   width: 80%;
+  transition: 0.5s;
+  height: 200px;
+}
+.shareIcons div:hover {
+  transform: scale(1.1);
+}
+
+@media only screen and (max-width: 768px) {
+  .shareIcons {
+    grid-column: 1;
+    grid-row: 5;
+    margin-top: 0;
+    width: 100%;
+  }
 }

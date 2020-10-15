@@ -121,4 +121,20 @@
 .createPostJS .sendbtN:hover {
   background-color: #67b427;
 }
+
+@media only screen and (max-width: 768px) {
+  .createPostJS {
+    width: 100%;
+    margin: 0 auto;
+  }
+  .createPostJS .crPostTop {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+  }
+  .createPostJS .crPostTop .postForm {
+    width: 100%;
+  }
+}
 /*# sourceMappingURL=CreatePost.css.map */

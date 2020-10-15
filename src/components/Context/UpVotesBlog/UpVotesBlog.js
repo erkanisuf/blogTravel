@@ -13,7 +13,7 @@ import { FaUserAlt } from "react-icons/fa";
 
 import { IconContext } from "react-icons";
 
-const UpVotesBlog = ({ link }) => {
+const UpVotesBlog = () => {
   const { valueOne } = useContext(BlogContext);
   const [blogs] = valueOne;
   const upvotearrCop = [...blogs];
@@ -63,7 +63,7 @@ const UpVotesBlog = ({ link }) => {
         }
         addArrowClickHandler={true}
         offset={0}
-        itemWidth={300}
+        itemWidth={275}
         plugins={[
           "centered",
 
@@ -95,22 +95,8 @@ const UpVotesBlog = ({ link }) => {
               <Link
                 to={`detail/${object.id}`}
                 state={object}
-                // navigate={{
-                //   pathname: `/detail/${object.id}`,
-                //   data: [{ id: 1, object: "Ford", color: "red" }],
-                // }}
                 style={{ textDecoration: "none" }}
               >
-                {/* <Link
-                to={`/${object.title}`}
-                style={{
-                  textDecoration: "none",
-                  display: "flex",
-                  flexDirection: "column",
-                  justifyContent: "space-between",
-                  height: "250px",
-                }}
-              > */}
                 <div className="userHeart">
                   <div>
                     <FaUserAlt />

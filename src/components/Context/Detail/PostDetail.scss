@@ -119,3 +119,32 @@ $grey: rgba(133, 133, 133, 0.5);
     }
   }
 }
+
+@media only screen and (max-width: 768px) {
+  .containerPostDetail {
+    width: 90%;
+
+    grid-template-columns: 1fr;
+
+    .titleheader {
+      grid-column: 1;
+      grid-row: 1/2;
+    }
+
+    .imgheader {
+      grid-column: 1;
+      grid-row: 2;
+    }
+
+    .themaintext {
+      grid-column: 1;
+      grid-row: 3/4;
+    }
+
+    .btnandcomment {
+      grid-column: 1;
+      grid-row: 4 / 5;
+      margin-bottom: 2px;
+    }
+  }
+}

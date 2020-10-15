@@ -38,6 +38,7 @@ $grey: rgba(135, 138, 140, 0.5);
     .flexPosts {
       display: flex;
       flex-direction: column;
+
       margin: 10px;
       border: 1px solid rgba(135, 138, 140, 0.5);
       border-radius: 20px;
@@ -51,7 +52,7 @@ $grey: rgba(135, 138, 140, 0.5);
           white-space: pre-wrap;
           overflow: hidden;
           text-overflow: ellipsis;
-          max-width: 80%;
+          max-width: 60%;
           line-height: 1.625;
           height: 109.2px;
           text-align: justify;
@@ -62,14 +63,18 @@ $grey: rgba(135, 138, 140, 0.5);
           color: #538d22;
         }
       }
-      img {
+      .theItsImg {
         width: 15%;
-        max-height: 150px;
-        object-fit: contain;
-        float: left;
-        padding: 5px;
-        border: 1px solid $grey;
-        margin: 15px;
+
+        img {
+          width: 300px;
+          height: 300px;
+          object-fit: contain;
+          padding: 5px;
+          border: 1px solid $grey;
+          margin: 15px;
+          margin-top: 30px;
+        }
       }
     }
 
@@ -97,6 +102,46 @@ $grey: rgba(135, 138, 140, 0.5);
       margin-right: 5px;
       span {
         margin-right: 5px;
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  .ContainerAllPost {
+    overflow: hidden;
+    width: 90%;
+
+    .filterButtons {
+      width: 100%;
+      height: 50px;
+      font-size: 15px;
+      flex-direction: row;
+      flex-wrap: wrap;
+      justify-content: center;
+      margin: 0 auto;
+      text-align: center;
+      align-items: center;
+    }
+    h1 {
+      font-size: 20px;
+    }
+
+    .theimgCOnt {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+
+      .theItsImg {
+        width: 100%;
+        margin-left: 15px;
+        img {
+          width: 200px !important;
+        }
+      }
+      .flexImgTitle {
+        height: 100%;
+        margin-left: 15px;
       }
     }
   }

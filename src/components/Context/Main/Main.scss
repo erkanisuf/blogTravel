@@ -110,3 +110,16 @@ $buttonPri: orange;
   margin-top: -25px;
   font-family: "PT Sans Narrow", sans-serif;
 }
+
+@media only screen and (max-width: 768px) {
+  .MainContainer {
+    grid-template-columns: 1fr;
+    grid-auto-rows: 200px;
+    h1 {
+      font-size: 20px;
+    }
+    h5 {
+      font-size: 12px;
+    }
+  }
+}

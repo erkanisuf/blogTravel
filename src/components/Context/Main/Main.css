@@ -145,4 +145,18 @@
   margin-top: -25px;
   font-family: "PT Sans Narrow", sans-serif;
 }
+
+@media only screen and (max-width: 768px) {
+  .MainContainer {
+    -ms-grid-columns: 1fr;
+        grid-template-columns: 1fr;
+    grid-auto-rows: 200px;
+  }
+  .MainContainer h1 {
+    font-size: 20px;
+  }
+  .MainContainer h5 {
+    font-size: 12px;
+  }
+}
 /*# sourceMappingURL=Main.css.map */

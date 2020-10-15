@@ -66,7 +66,7 @@ const UserPanel = () => {
     <div className="userPanel">
       
       <div className="imgLoggedAs">
-        <p>Logged as {useremail}</p>
+        <p>Logged as:  {useremail}</p>
         {avatar ? <img src={avatar} alt={avatar} /> : <img src={noimage} alt={noimage} /> }
       </div>
       <div className="menuUserBar">
@@ -76,13 +76,15 @@ const UserPanel = () => {
         >
           <p>My Favorite Posts: {myfavLength} </p>
         </Link>
-        <Link style={{ textDecoration: "none", color: "black" }} to="settings/">
-          <p>Settings  <AiOutlineSetting /></p>
-        </Link>
+       
         <Link style={{ textDecoration: "none", color: "black" }} to="myposts/">
           <p>My Posts: {mypostLength.length}</p>
         </Link>
+        <Link style={{ textDecoration: "none", color: "black" }} to="settings/">
+          <p>Settings  <AiOutlineSetting /></p>
+        </Link>
       </div>
+      
 
       <span
         onClick={signOut}

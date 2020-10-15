@@ -12,21 +12,18 @@ import { FaUser } from "react-icons/fa";
 
 import Comment from "../Comment/Comment";
 import Moment from "react-moment";
-import RandomPost from './RandomPost'
+import RandomPost from "./RandomPost";
 import ShareBox from "./ShareBox";
 
 const Detail = () => {
   const { id } = useParams();
   const dataRouter = id;
-  const noimage= require('../../../images/115-1150152_default-profile-picture-avatar-png-green.png')
-  const { valueOne, valueTwo, valueFour, valueSix } = useContext(
-    BlogContext
-  );
+  const noimage = require("../../../images/115-1150152_default-profile-picture-avatar-png-green.png");
+  const { valueOne, valueTwo, valueFour, valueSix } = useContext(BlogContext);
   const [blogs] = valueOne;
   const [favorites] = valueSix;
 
   const copyofBlogsArrDetail = blogs.find((el) => el.id === dataRouter);
-
 
   const [useremail] = valueFour;
   const [loggedIn] = valueTwo;
@@ -36,7 +33,7 @@ const Detail = () => {
   const [commentShow, setcommentShow] = useState(false);
   const [favFill, setfavFill] = useState(null);
   const [avatar, setAvatar] = useState(null);
-const currentUrl = window.location.href;
+  const currentUrl = window.location.href;
 
   useEffect(() => {
     let findArrofFavs = favorites.find((el) => {
@@ -46,9 +43,7 @@ const currentUrl = window.location.href;
     if (avatar.avatar) {
       setAvatar(avatar.avatar);
     } else {
-      setAvatar(
-        noimage
-      );
+      setAvatar(noimage);
     }
 
     if (findArrofFavs) {
@@ -68,7 +63,7 @@ const currentUrl = window.location.href;
         setfavFill(false);
       }
     }
-  }, [favorites, useremail, copyofBlogsArrDetail,noimage]);
+  }, [favorites, useremail, copyofBlogsArrDetail, noimage]);
 
   useEffect(() => {
     setLogErr("");
@@ -150,7 +145,6 @@ const currentUrl = window.location.href;
         .doc(useremail)
         .update({
           favoritePost: [copyofBlogsArrDetail.id],
-          
         });
     }
   };
@@ -158,7 +152,6 @@ const currentUrl = window.location.href;
   const addtoFavorites = (param) => {
     firebase.firestore().collection("Users").doc(useremail).update({
       favoritePost: param,
-     
     });
   };
 
@@ -207,35 +200,38 @@ const currentUrl = window.location.href;
               >
                 {btnFill ? <AiOutlineHeart /> : <AiFillHeart />}
               </span>
-              
+
               <span
-            style={{
-              float: "right",
-              marginRight: "10px",
-              fontSize: "22px",
-              cursor: "pointer",
-            }}
-            onClick={() => setcommentShow(!commentShow)}
-          >
-            <FaRegComment />
-            <span
                 style={{
                   float: "right",
-                  margin:'0 5px',
-                  fontSize: "15px",
+                  marginRight: "10px",
+                  fontSize: "22px",
+                  cursor: "pointer",
                 }}
+                onClick={() => setcommentShow(!commentShow)}
               >
-                {copyofBlogsArrDetail.comments.length} Comments
-                <p style={{ color: "red" }}>{logErr}</p>
+                <FaRegComment />
+                <span
+                  style={{
+                    float: "right",
+                    margin: "0 5px",
+                    fontSize: "15px",
+                  }}
+                >
+                  {copyofBlogsArrDetail.comments.length} Comments
+                  <p style={{ color: "red" }}>{logErr}</p>
+                </span>
               </span>
-          </span>
-         
-              <button className='btnFav'
+
+              <button
+                className="btnFav"
                 style={{ backgroundColor: favFill ? " #67b427" : "#a5a5a5" }}
                 onClick={checkuserfavorites}
               >
-                {favFill? 'In Favorites':'Add to Favorites' }
-                <span><AiOutlineStar /></span>
+                {favFill ? "In Favorites" : "Add to Favorites"}
+                <span>
+                  <AiOutlineStar />
+                </span>
               </button>
             </div>
           ) : (
@@ -262,16 +258,14 @@ const currentUrl = window.location.href;
               >
                 <AiOutlineHeart />
               </span>
-              
+
               <button
                 onClick={() => setLogErr("Only registered can add to fav")}
               >
                 add to favorite
               </button>
-              
             </div>
           )}
-          
 
           {commentShow && (
             <Comment
@@ -283,9 +277,8 @@ const currentUrl = window.location.href;
           )}
         </div>
         <RandomPost />
-        <ShareBox url={currentUrl}/>
+        <ShareBox url={currentUrl} />
       </div>
-    
     </>
   );
 };

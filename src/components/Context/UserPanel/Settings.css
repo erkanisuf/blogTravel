@@ -127,4 +127,13 @@
 .theSettings .paswReset button {
   padding: 5px;
 }
+
+@media only screen and (max-width: 768px) {
+  .theSettings {
+    width: 100%;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+  }
+}
 /*# sourceMappingURL=Settings.css.map */
