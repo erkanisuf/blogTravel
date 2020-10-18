@@ -10,7 +10,7 @@ import { FaUser } from "react-icons/fa";
 import { CgClose } from "react-icons/cg";
 
 import { AiFillHome } from "react-icons/ai";
-import { AiOutlineDown } from "react-icons/ai";
+import { AiFillCaretDown } from "react-icons/ai";
 import { AiFillCaretUp } from "react-icons/ai";
 import { IoIosCreate } from "react-icons/io";
 import { BsFilePost } from "react-icons/bs";
@@ -75,7 +75,7 @@ function Layout(props) {
             {loggedIn ? (
               <div className="trybeRelative">
                 <span className="deskUser" onClick={() => setToggle(!toggle)}>
-                  {!toggle ? <AiOutlineDown /> : <AiFillCaretUp />}
+                  {!toggle ? <AiFillCaretDown /> : <AiFillCaretUp />}
                   User Panel{" "}
                 </span>
 

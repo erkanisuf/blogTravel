@@ -34,7 +34,7 @@
     margin-left: 55px;
 
     p {
-      height: 55px;
+      height: 35px;
 
       box-sizing: border-box;
       .iconsForMenu {
@@ -97,7 +97,8 @@
 
     .navBar {
       width: 100%;
-      padding: 0;
+      padding: 0 25px;
+
       position: fixed;
       bottom: 0;
       background-color: white;

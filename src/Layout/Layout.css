@@ -52,7 +52,7 @@
 }
 
 .headerBar ul p {
-  height: 55px;
+  height: 35px;
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
 }
@@ -135,7 +135,7 @@
   }
   .headerBar .navBar {
     width: 100%;
-    padding: 0;
+    padding: 0 25px;
     position: fixed;
     bottom: 0;
     background-color: white;

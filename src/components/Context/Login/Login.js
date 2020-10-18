@@ -29,7 +29,8 @@ const Login = () => {
       favoritePost: [],
       useremail: auth.user.email,
       userid: auth.user.uid,
-      likedPost: [],
+      myLikes: [],
+      myPost: [],
     });
   };
 

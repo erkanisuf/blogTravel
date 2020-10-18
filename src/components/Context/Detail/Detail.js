@@ -9,6 +9,7 @@ import { AiOutlineStar } from "react-icons/ai";
 import firebase from "firebase";
 import { db } from "../../../firebase/firebase";
 import { FaUser } from "react-icons/fa";
+import { Link } from "react-router-dom";
 
 import Comment from "../Comment/Comment";
 import Moment from "react-moment";
@@ -30,6 +31,8 @@ const Detail = () => {
   const [btnFill, setBtnFill] = useState(null);
   const [logErr, setLogErr] = useState("");
 
+  const [LogErrFavorites, setLogErrFavorites] = useState("");
+  const [LogErrComments, setLogErrComments] = useState("");
   const [commentShow, setcommentShow] = useState(false);
   const [favFill, setfavFill] = useState(null);
   const [avatar, setAvatar] = useState(null);
@@ -96,6 +99,7 @@ const Detail = () => {
         setBtnFill(true);
         pushArray.push(useremail);
         writeUserData(copyofBlogsArrDetail.id, pushArray);
+        addtoUserLikes(copyofBlogsArrDetail.id);
       }
     } else {
       setLogErr("Only registered can vote");
@@ -155,6 +159,16 @@ const Detail = () => {
     });
   };
 
+  const addtoUserLikes = (param) => {
+    firebase
+      .firestore()
+      .collection("Users")
+      .doc(useremail)
+      .update({
+        myLikes: firebase.firestore.FieldValue.arrayUnion(param),
+      });
+  };
+
   return (
     <>
       <div className="containerPostDetail">
@@ -167,7 +181,16 @@ const Detail = () => {
           <span>
             <Moment format="YYYY/MM/DD">{copyofBlogsArrDetail.date}</Moment>
           </span>
-          <span>{copyofBlogsArrDetail.useremail}</span>
+          <span>
+            {" "}
+            <Link
+              to={`/user/${copyofBlogsArrDetail.useremail}`}
+              // state={object}
+              style={{ textDecoration: "none" }}
+            >
+              {copyofBlogsArrDetail.useremail}
+            </Link>
+          </span>
         </div>
         <div className="imgheader">
           <img
@@ -258,12 +281,40 @@ const Detail = () => {
               >
                 <AiOutlineHeart />
               </span>
+              <span
+                style={{
+                  float: "right",
+                  marginRight: "10px",
+                  fontSize: "22px",
+                  cursor: "pointer",
+                }}
+                onClick={() => setLogErrComments("Log in To See Comments..")}
+              >
+                <FaRegComment />
+                <span
+                  style={{
+                    float: "right",
+                    margin: "0 5px",
+                    fontSize: "15px",
+                  }}
+                >
+                  {copyofBlogsArrDetail.comments.length} Comments
+                  <p style={{ color: "red" }}>{LogErrComments}</p>
+                </span>
+              </span>
 
               <button
-                onClick={() => setLogErr("Only registered can add to fav")}
+                className="btnFav"
+                style={{ backgroundColor: "#5f5f5f" }}
+                onClick={() =>
+                  setLogErrFavorites("Only registered can add to fav")
+                }
               >
                 add to favorite
+                <AiOutlineStar />
               </button>
+
+              <p style={{ color: "red" }}>{LogErrFavorites}</p>
             </div>
           )}
 

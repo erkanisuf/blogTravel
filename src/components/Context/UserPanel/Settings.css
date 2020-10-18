@@ -77,11 +77,13 @@
 }
 
 .theSettings span {
-  color: black;
-  margin: 15px;
   cursor: pointer;
-  font-size: 22px;
-  font-weight: 200;
+  margin: 5px 0;
+  border: 1px solid rgba(172, 171, 171, 0.616);
+  width: 100%;
+  border-radius: 5px;
+  font-size: 15px;
+  padding: 5px;
 }
 
 .theSettings span:hover {

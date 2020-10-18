@@ -119,18 +119,35 @@ const CreatePost = () => {
   };
 
   const sendToFireBase = () => {
-    firebase.firestore().collection("blogpost").add({
-      name: valuename,
-      likes: [],
-      useremail: useremail,
-      userid: userid,
-      image: url,
-      uid: firebase.auth().currentUser.uid,
-      title: valuetitle,
-      text: valuetext,
-      date: new Date().toISOString(),
-      comments: [],
-    });
+    firebase
+      .firestore()
+      .collection("blogpost")
+      .add({
+        name: valuename,
+        likes: [],
+        useremail: useremail,
+        userid: userid,
+        image: url,
+        uid: firebase.auth().currentUser.uid,
+        title: valuetitle,
+        text: valuetext,
+        date: new Date().toISOString(),
+        comments: [],
+      })
+      .then((docRef) => {
+        console.log("Document written with ID: ", docRef.id);
+        addtoUserPosts(docRef.id);
+      });
+  };
+
+  const addtoUserPosts = (param) => {
+    firebase
+      .firestore()
+      .collection("Users")
+      .doc(useremail)
+      .update({
+        myPost: firebase.firestore.FieldValue.arrayUnion(param),
+      });
   };
 
   return (
@@ -138,7 +155,11 @@ const CreatePost = () => {
       <div className="crPostTop">
         <div className="postForm">
           <label>Title</label>
-          <input type="text" onChange={handleEditorChangeTitle} maxLength="20"/>
+          <input
+            type="text"
+            onChange={handleEditorChangeTitle}
+            maxLength="20"
+          />
           {titleErr && <p style={{ color: "red" }}>{titleErr}</p>}
           <label>From</label>
           <input type="text" onChange={handleEditorChangeName} />

@@ -9,6 +9,8 @@ import Login from "./components/Context/Login/Login";
 import Detail from "./components/Context/Detail/Detail";
 import AllPost from "./components/Context/AllPost/AllPost";
 
+import User from "./components/Context/User/User";
+
 import EditPost from "./components/Context/UserPanel/EditPost";
 import MyPost from "./components/Context/UserPanel/MyPost";
 import UserFavorites from "./components/Context/UserPanel/UserFavorites";
@@ -24,11 +26,10 @@ function App() {
       <Routes>
         <Route path="/" element={<Main />} />
         <Route path="detail/:id" element={<Detail />} />
+        <Route path="user/:id" element={<User />} />
 
         <Route path="login/" element={<Login />} />
         <Route path="allpost/" element={<AllPost />} />
-
-        
 
         <PrivateRouter
           isAuth={loggedIn}

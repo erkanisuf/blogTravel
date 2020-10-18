@@ -20,6 +20,11 @@ const UserPanel = () => {
     return el.useremail === useremail;
   });
 
+  // const fintmyAcc = favorites.filter((el) => {
+  //   return el.id === useremail;
+  // });
+  // console.log(fintmyAcc[0], "findac");
+
   const deletePost = (e) => {
     console.log(e);
     db.collection("blogpost").doc(e).delete();

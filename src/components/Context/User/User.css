@@ -1,0 +1,140 @@
+@import url("https://fonts.googleapis.com/css2?family=PT+Sans+Narrow&display=swap");
+.userInfos {
+  margin: 0 auto;
+  font-family: "PT Sans Narrow", sans-serif;
+  width: 80%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.userInfos span {
+  cursor: pointer;
+  margin: 5px 0;
+  border: 1px solid rgba(172, 171, 171, 0.616);
+  width: 100%;
+  border-radius: 5px;
+  font-size: 15px;
+  padding: 5px;
+  font-weight: 800;
+}
+
+.userInfos .userinfosPost {
+  color: black;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  width: 100%;
+}
+
+.userInfos .userinfosPost a {
+  font-weight: 800;
+  margin-left: 10px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  width: 100%;
+  color: black;
+  border-bottom: 1px solid rgba(172, 171, 171, 0.616);
+}
+
+.userInfos .userinfosPost a p:hover {
+  text-decoration: underline;
+}
+
+.userInfos .userinfosComments {
+  color: black;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  width: 100%;
+}
+
+.userInfos .userinfosComments div {
+  margin-left: 10px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  width: 100%;
+  color: black;
+  border-bottom: 1px solid rgba(172, 171, 171, 0.616);
+}
+
+.userInfos .userinfosComments div p {
+  height: 30px;
+  padding: 5px;
+  border-radius: 10px;
+  border: 1px solid rgba(172, 171, 171, 0.616);
+  font-style: italic;
+}
+
+.userInfos .userinfosComments div p:hover {
+  text-decoration: underline;
+}
+
+.userInfos .userinfosComments div span {
+  width: 20%;
+  margin-top: 20px;
+  border: none;
+}
+
+.userInfos .userinfosComments div span:hover {
+  text-decoration: underline;
+}
+
+.userInfos .userinfosComments div a {
+  font-style: normal;
+  color: green;
+  font-weight: 800;
+  letter-spacing: 1px;
+  margin-left: 5px;
+  width: 100px;
+}
+
+@media only screen and (max-width: 768px) {
+  .userInfos .userinfosComments div {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+  }
+}
+/*# sourceMappingURL=User.css.map */

@@ -122,29 +122,43 @@ $grey: rgba(133, 133, 133, 0.5);
 
 @media only screen and (max-width: 768px) {
   .containerPostDetail {
-    width: 90%;
+    width: 100%;
 
     grid-template-columns: 1fr;
 
     .titleheader {
       grid-column: 1;
       grid-row: 1/2;
+      padding-right: -10px;
+      margin-right: -10px;
+      margin: 0;
+      span {
+        padding-right: -10px;
+        margin-right: -10px;
+        margin: 0;
+      }
     }
 
     .imgheader {
       grid-column: 1;
       grid-row: 2;
+      width: 90%;
     }
 
     .themaintext {
       grid-column: 1;
       grid-row: 3/4;
+      width: 90%;
+      word-wrap: break-word;
     }
 
     .btnandcomment {
       grid-column: 1;
       grid-row: 4 / 5;
       margin-bottom: 2px;
+      span {
+        margin: 0;
+      }
     }
   }
 }

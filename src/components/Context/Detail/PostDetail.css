@@ -146,7 +146,7 @@
 
 @media only screen and (max-width: 768px) {
   .containerPostDetail {
-    width: 90%;
+    width: 100%;
     -ms-grid-columns: 1fr;
         grid-template-columns: 1fr;
   }
@@ -156,12 +156,21 @@
     -ms-grid-row: 1;
     -ms-grid-row-span: 1;
     grid-row: 1/2;
+    padding-right: -10px;
+    margin-right: -10px;
+    margin: 0;
+  }
+  .containerPostDetail .titleheader span {
+    padding-right: -10px;
+    margin-right: -10px;
+    margin: 0;
   }
   .containerPostDetail .imgheader {
     -ms-grid-column: 1;
     grid-column: 1;
     -ms-grid-row: 2;
     grid-row: 2;
+    width: 90%;
   }
   .containerPostDetail .themaintext {
     -ms-grid-column: 1;
@@ -169,6 +178,8 @@
     -ms-grid-row: 3;
     -ms-grid-row-span: 1;
     grid-row: 3/4;
+    width: 90%;
+    word-wrap: break-word;
   }
   .containerPostDetail .btnandcomment {
     -ms-grid-column: 1;
@@ -177,6 +188,9 @@
     -ms-grid-row-span: 1;
     grid-row: 4 / 5;
     margin-bottom: 2px;
+  }
+  .containerPostDetail .btnandcomment span {
+    margin: 0;
   }
 }
 /*# sourceMappingURL=PostDetail.css.map */

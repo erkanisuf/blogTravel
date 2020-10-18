@@ -5,7 +5,7 @@ import "./Settings.css";
 
 import firebase from "firebase";
 
-import { AiOutlineDown } from "react-icons/ai";
+import { AiFillCaretDown } from "react-icons/ai";
 import { AiFillCaretUp } from "react-icons/ai";
 
 const UserPanel = () => {
@@ -26,7 +26,7 @@ const UserPanel = () => {
       .sendPasswordResetEmail(forgetPass)
       .then((auth) => {
         console.log(auth);
-        seterrorMsg("Please reset password by checking your mail box")
+        seterrorMsg("Please reset password by checking your mail box");
         console.log("check email");
       })
       .catch((err) => seterrorMsg(err));
@@ -35,12 +35,17 @@ const UserPanel = () => {
   return (
     <div className="theSettings">
       <h1>Settings</h1>
-      <span onClick={() => setToggleImg(!toggleImg)}>{toggleImg ?<AiFillCaretUp /> :< AiOutlineDown /> }Change/Upload Avatar</span>
+      <span onClick={() => setToggleImg(!toggleImg)}>
+        {toggleImg ? <AiFillCaretUp /> : <AiFillCaretDown />}Change/Upload
+        Avatar
+      </span>
       {toggleImg && (
         <UserImage useremail={useremail} favorites={favorites} blogs={blogs} />
       )}
 
-     <span onClick={() => setToggleReset(!toggleReset)}>{toggleReset ?<AiFillCaretUp /> :< AiOutlineDown /> }Reset Password</span>
+      <span onClick={() => setToggleReset(!toggleReset)}>
+        {toggleReset ? <AiFillCaretUp /> : <AiFillCaretDown />}Reset Password
+      </span>
       {toggleReset && (
         <div className="paswReset">
           Email:
@@ -52,7 +57,6 @@ const UserPanel = () => {
           <button className="resetbtn" type="submit" onClick={resetPasw}>
             Confirm reset
           </button>
-          
           {errorMsg && <div>errorMsg </div>}
         </div>
       )}
