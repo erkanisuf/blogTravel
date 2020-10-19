@@ -324,6 +324,7 @@ const Detail = () => {
               useremail={useremail}
               avatar={avatar}
               loggedIn={loggedIn}
+              favorites={favorites}
             />
           )}
         </div>
