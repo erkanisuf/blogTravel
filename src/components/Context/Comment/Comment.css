@@ -65,3 +65,62 @@
   cursor: pointer;
   position: relative;
 }
+
+.edtbtn {
+  background-color: #b1961f;
+  outline: none;
+  border: none;
+  border-radius: 5px;
+  margin: 5px;
+  padding: 5px;
+  color: white;
+  font-size: 10px;
+  transition: 1s;
+}
+.edtbtn:hover {
+  cursor: pointer;
+  background-color: #f7d43c;
+}
+
+.dltbtn {
+  background-color: #d63030;
+  outline: none;
+  border: none;
+  border-radius: 5px;
+  margin: 5px;
+  padding: 5px;
+  color: white;
+  font-size: 10px;
+  transition: 1s;
+}
+.dltbtn:hover {
+  cursor: pointer;
+  background-color: #f13838;
+}
+
+.okbtn {
+  background-color: #22ac29;
+  outline: none;
+  border: none;
+  border-radius: 5px;
+  margin: 5px;
+  padding: 15px;
+  color: white;
+  font-size: 10px;
+  transition: 1s;
+}
+.okbtn:hover {
+  cursor: pointer;
+  background-color: #38f151;
+}
+
+.editarea {
+  width: 50%;
+  height: 50px;
+  border-radius: 1px;
+  outline: none;
+  border: 1px solid grey;
+}
+.editarea:focus {
+  outline: none;
+}

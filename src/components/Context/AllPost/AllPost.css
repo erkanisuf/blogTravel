@@ -66,6 +66,10 @@
   border-radius: 20px;
 }
 
+.ContainerAllPost .flexAllPost .flexPosts:hover {
+  background-color: rgba(222, 226, 230, 0.5);
+}
+
 .ContainerAllPost .flexAllPost .theimgCOnt .flexImgTitle {
   display: -webkit-box;
   display: -ms-flexbox;

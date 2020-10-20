@@ -11,6 +11,7 @@ export const BlogProvider = (props) => {
   const [useremail, setuserEmail] = useState("");
   const [pardq, setPardq] = useState("");
   const [favorites, setfavorites] = useState([]);
+  const [toggle, setToggle] = useState(false);
 
   useEffect(() => {
     auth.onAuthStateChanged((authuser) => {
@@ -34,6 +35,7 @@ export const BlogProvider = (props) => {
           id: doc.id,
           ...doc.data(),
         }));
+        console.log(allPost);
         setBlogs(allPost);
         setLoaded(true);
       });
@@ -65,6 +67,7 @@ export const BlogProvider = (props) => {
         valueFour: [useremail, setuserEmail],
         valueFive: [pardq, setPardq],
         valueSix: [favorites, setfavorites],
+        valueEight: [toggle, setToggle],
       }}
     >
       {loaded && props.children}

@@ -2,8 +2,9 @@ import React, { useContext, useEffect, useState } from "react";
 import { BlogContext } from "../Context/BlogContext";
 import { useParams } from "react-router-dom";
 import { Link } from "react-router-dom";
-import "./User.css";
 import Moment from "react-moment";
+import "./User.css";
+
 import { AiFillCaretDown } from "react-icons/ai";
 import { AiFillCaretUp } from "react-icons/ai";
 
@@ -22,6 +23,7 @@ const User = () => {
   const [togglePost, setTogglePost] = useState(false);
   const [toggleLiked, setToggleLiked] = useState(false);
   const [toggleComments, setToggleComments] = useState(false);
+  const noimage = require("../../../images/115-1150152_default-profile-picture-avatar-png-green.png");
 
   useEffect(() => {
     const fintmyAcc = favorites.find((el) => {
@@ -64,8 +66,13 @@ const User = () => {
     <div className="userInfos">
       <h1>User Panel</h1>
       {user && (
-        <p>
-          user: <b>{user.id}</b>
+        <p className="nameandImg">
+          <span>user:</span> <b>{user.id}</b>
+          {user.avatar ? (
+            <img src={user.avatar} alt={user.avatar} />
+          ) : (
+            <img src={noimage} alt={noimage} />
+          )}
         </p>
       )}
       <span onClick={() => setTogglePost(!togglePost)}>
@@ -136,17 +143,33 @@ const User = () => {
           {userComments &&
             userComments.map((key) => {
               return (
-                <div>
-                  <p key={key.date}>{key.text} commented in post:</p>
-                  <span>
-                    <Link
-                      to={`/detail/${key.title.id}`}
-                      // state={object}
-                      style={{ textDecoration: "none" }}
+                <div className="userinfosCommentsBox" key={key.date}>
+                  <div>
+                    <p>{key.text} commented in post:</p>
+                    <span>
+                      <Link
+                        to={key.title ? `/detail/${key.title.id}` : ``}
+                        // state={object}
+                        style={{ textDecoration: "none" }}
+                      >
+                        {key.title
+                          ? key.title.title
+                          : "This post has been deleted!"}
+                      </Link>
+                    </span>
+                  </div>
+
+                  <div>
+                    <Moment
+                      style={{
+                        fontStyle: "italic",
+                        color: "rgba(172, 171, 171, 0.616)",
+                      }}
+                      format="YYYY/MM/DD, h:mm:ss a"
                     >
-                      {key.title.title}
-                    </Link>
-                  </span>
+                      {key.date}
+                    </Moment>
+                  </div>
                 </div>
               );
             })}

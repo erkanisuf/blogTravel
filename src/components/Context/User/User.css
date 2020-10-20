@@ -18,6 +18,25 @@
           align-items: center;
 }
 
+.userInfos .nameandImg {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: space-evenly;
+      -ms-flex-pack: space-evenly;
+          justify-content: space-evenly;
+  text-align: center;
+}
+
+.userInfos .nameandImg img {
+  margin-top: 15px;
+  width: 150px;
+}
+
 .userInfos span {
   cursor: pointer;
   margin: 5px 0;
@@ -62,6 +81,10 @@
   border-bottom: 1px solid rgba(172, 171, 171, 0.616);
 }
 
+.userInfos .userinfosPost a p {
+  font-size: 15px;
+}
+
 .userInfos .userinfosPost a p:hover {
   text-decoration: underline;
 }
@@ -81,7 +104,7 @@
   width: 100%;
 }
 
-.userInfos .userinfosComments div {
+.userInfos .userinfosComments .userinfosCommentsBox {
   margin-left: 10px;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -90,37 +113,38 @@
   -webkit-box-direction: normal;
       -ms-flex-direction: row;
           flex-direction: row;
-  -webkit-box-pack: start;
-      -ms-flex-pack: start;
-          justify-content: flex-start;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
   width: 100%;
   color: black;
   border-bottom: 1px solid rgba(172, 171, 171, 0.616);
 }
 
-.userInfos .userinfosComments div p {
+.userInfos .userinfosComments .userinfosCommentsBox p {
   height: 30px;
-  padding: 5px;
+  padding: 15px;
   border-radius: 10px;
   border: 1px solid rgba(172, 171, 171, 0.616);
   font-style: italic;
 }
 
-.userInfos .userinfosComments div p:hover {
+.userInfos .userinfosComments .userinfosCommentsBox p:hover {
   text-decoration: underline;
+  background-color: rgba(172, 171, 171, 0.616);
 }
 
-.userInfos .userinfosComments div span {
+.userInfos .userinfosComments .userinfosCommentsBox span {
   width: 20%;
   margin-top: 20px;
   border: none;
 }
 
-.userInfos .userinfosComments div span:hover {
+.userInfos .userinfosComments .userinfosCommentsBox span:hover {
   text-decoration: underline;
 }
 
-.userInfos .userinfosComments div a {
+.userInfos .userinfosComments .userinfosCommentsBox a {
   font-style: normal;
   color: green;
   font-weight: 800;
@@ -130,7 +154,7 @@
 }
 
 @media only screen and (max-width: 768px) {
-  .userInfos .userinfosComments div {
+  .userInfos .userinfosComments .userinfosCommentsBox {
     -webkit-box-orient: vertical;
     -webkit-box-direction: normal;
         -ms-flex-direction: column;

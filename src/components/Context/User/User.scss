@@ -7,6 +7,17 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  .nameandImg {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    text-align: center;
+
+    img {
+      margin-top: 15px;
+      width: 150px;
+    }
+  }
   span {
     cursor: pointer;
     margin: 5px 0;
@@ -34,6 +45,7 @@
       color: black;
       border-bottom: 1px solid rgba(172, 171, 171, 0.616);
       p {
+        font-size: 15px;
         &:hover {
           text-decoration: underline;
         }
@@ -46,22 +58,24 @@
     flex-direction: column;
     justify-content: space-between;
     width: 100%;
-    div {
+    .userinfosCommentsBox {
       margin-left: 10px;
       display: flex;
       flex-direction: row;
-      justify-content: flex-start;
+      justify-content: space-between;
       width: 100%;
       color: black;
       border-bottom: 1px solid rgba(172, 171, 171, 0.616);
       p {
         height: 30px;
-        padding: 5px;
+
+        padding: 15px;
         border-radius: 10px;
         border: 1px solid rgba(172, 171, 171, 0.616);
         font-style: italic;
         &:hover {
           text-decoration: underline;
+          background-color: rgba(172, 171, 171, 0.616);
         }
       }
       span {
@@ -87,7 +101,7 @@
 @media only screen and (max-width: 768px) {
   .userInfos {
     .userinfosComments {
-      div {
+      .userinfosCommentsBox {
         flex-direction: column;
       }
     }

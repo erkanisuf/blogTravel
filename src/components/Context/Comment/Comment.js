@@ -4,7 +4,9 @@ import firebase from "firebase";
 import "./Comment.css";
 import Moment from "react-moment";
 import uuid from "react-uuid";
-
+import { FaEdit } from "react-icons/fa";
+import { AiFillDelete } from "react-icons/ai";
+import { Link } from "react-router-dom";
 const Comment = ({
   copyofBlogsArrDetail,
   useremail,
@@ -13,7 +15,7 @@ const Comment = ({
   favorites,
 }) => {
   const [updatecomments, setupdateComments] = useState(null);
-  console.log(updatecomments);
+  console.log("updatecoms", updatecomments);
 
   //TEXT area Edit when posting comment
   const [textareavalue, settextareavalue] = useState("");
@@ -21,7 +23,7 @@ const Comment = ({
     settextareavalue(e.target.value);
   };
   //Editing Comment
-  const [editInputValue, setEditInputValue] = useState("");
+
   const handleEditInput = (e, index) => {
     console.log(e.target.value);
     console.log(index);
@@ -78,11 +80,40 @@ const Comment = ({
   const buttonOk = (key, index) => {
     const updateClose = [...updatecomments];
     updateClose[index].toggleEdit = false;
+    updateClose[index].edited = new Date().toISOString();
+
     setupdateComments(updateClose);
     console.log(updateClose, "can i send");
     updateEditFireBaseComments(updateClose);
     updateUserMyCommentsFB();
   };
+  const removeComment = (key, index) => {
+    const updateClose = [...updatecomments];
+    updateClose.splice(index, 1);
+
+    console.log(updateClose, "del");
+    updateEditFireBaseComments(updateClose);
+    removeCommentFromUsersDB(index);
+  };
+
+  const removeCommentFromUsersDB = (index) => {
+    const matchUser = favorites.find((el) => {
+      return el.id === useremail;
+    });
+
+    const copyUsercomments = [...matchUser.myComments];
+    const updateClose = [...updatecomments];
+    const kur = copyUsercomments.find((el) => {
+      return el.uuid === updateClose[index].uuid;
+    });
+    console.log("kur", kur);
+    db.collection("Users")
+      .doc(useremail)
+      .update({
+        myComments: firebase.firestore.FieldValue.arrayRemove(kur),
+      });
+  };
+
   //Updates Posts Edited Comment
   const updateEditFireBaseComments = (param) => {
     db.collection("blogpost").doc(copyofBlogsArrDetail.id).update({
@@ -134,7 +165,17 @@ const Comment = ({
         ? copyofBlogsArrDetail.comments.map((key, index) => {
             return (
               <div className="thecommentS" key={index}>
-                <img src={key.avatar} alt={index} />
+                <Link
+                  to={`/user/${key.email}`}
+                  // state={object}
+                  style={{
+                    textDecoration: "none",
+                    color: "rgba(133, 133, 133, 0.9)",
+                  }}
+                >
+                  {" "}
+                  <img src={key.avatar} alt={index} />
+                </Link>
                 <div>
                   <span
                     style={{
@@ -142,12 +183,35 @@ const Comment = ({
                       color: "rgba(133, 133, 133, 0.9)",
                     }}
                   >
-                    {key.email}
+                    <Link
+                      to={`/user/${key.email}`}
+                      // state={object}
+                      style={{
+                        textDecoration: "none",
+                        color: "rgba(133, 133, 133, 0.9)",
+                      }}
+                    >
+                      {" "}
+                      {key.email}
+                    </Link>
                   </span>
                   {key.email === useremail ? (
-                    <button onClick={() => editTarget(key, index)}>Edit</button>
+                    <span>
+                      <button
+                        className="edtbtn"
+                        onClick={() => editTarget(key, index)}
+                      >
+                        Edit <FaEdit />
+                      </button>
+                      <button
+                        className="dltbtn"
+                        onClick={() => removeComment(key, index)}
+                      >
+                        remove <AiFillDelete />
+                      </button>
+                    </span>
                   ) : (
-                    "Cant edit"
+                    ""
                   )}
                   <Moment
                     style={{
@@ -155,7 +219,7 @@ const Comment = ({
                       fontStyle: "italic",
                       color: "rgba(133, 133, 133, 0.9)",
                     }}
-                    format="YYYY/MM/DD"
+                    format="YYYY/MM/DD, h:mm:ss a"
                   >
                     {key.date}
                   </Moment>
@@ -163,16 +227,51 @@ const Comment = ({
                     {key.toggleEdit ? (
                       <span>
                         <input
+                          className="editarea"
                           type="textarea"
                           value={key.text}
                           onChange={(e) => handleEditInput(e, index)}
                         />
-                        <button onClick={() => buttonOk(key, index)}>Ok</button>
+                        <button
+                          className="okbtn"
+                          onClick={() => buttonOk(key, index)}
+                        >
+                          Ok
+                        </button>
                       </span>
                     ) : (
                       key.text
                     )}
                   </p>
+                  {key.edited ? (
+                    <span>
+                      <Moment
+                        style={{
+                          float: "right",
+                          fontStyle: "italic",
+                          color: "rgba(133, 133, 133, 0.9)",
+                          fontSize: "13px",
+                        }}
+                        format="YYYY/MM/DD, h:mm:ss a"
+                      >
+                        {key.edited}
+                      </Moment>
+                      <span
+                        style={{
+                          float: "right",
+
+                          fontStyle: "italic",
+                          color: "rgba(133, 133, 133, 1)",
+                          fontSize: "13px",
+                          marginRight: "5px",
+                        }}
+                      >
+                        edited:
+                      </span>
+                    </span>
+                  ) : (
+                    ""
+                  )}
                 </div>
               </div>
             );

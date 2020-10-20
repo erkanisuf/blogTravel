@@ -4,7 +4,7 @@ import { db } from "../../../firebase/firebase";
 import { FaUser } from "react-icons/fa";
 import { AiFillHeart } from "react-icons/ai";
 import { AiFillDelete } from "react-icons/ai";
-
+import firebase from "firebase";
 import { FaRegComment } from "react-icons/fa";
 import { FaEdit } from "react-icons/fa";
 
@@ -27,7 +27,13 @@ const UserPanel = () => {
 
   const deletePost = (e) => {
     console.log(e);
-    db.collection("blogpost").doc(e).delete();
+    db.collection("blogpost").doc(e.id).delete();
+
+    db.collection("Users")
+      .doc(useremail)
+      .update({
+        myPost: firebase.firestore.FieldValue.arrayRemove(e.id),
+      });
   };
 
   return (
@@ -79,7 +85,7 @@ const UserPanel = () => {
                     <button
                       className="dltbtn"
                       onClick={() => {
-                        deletePost(key.id);
+                        deletePost(key);
                       }}
                     >
                       delete

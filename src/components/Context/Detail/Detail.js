@@ -21,6 +21,7 @@ const Detail = () => {
   const dataRouter = id;
   const noimage = require("../../../images/115-1150152_default-profile-picture-avatar-png-green.png");
   const { valueOne, valueTwo, valueFour, valueSix } = useContext(BlogContext);
+
   const [blogs] = valueOne;
   const [favorites] = valueSix;
 
@@ -169,6 +170,29 @@ const Detail = () => {
       });
   };
 
+  const UnlikePost = (e) => {
+    console.log(e.id);
+    db.collection("blogpost")
+      .doc(e.id)
+      .update({
+        likes: firebase.firestore.FieldValue.arrayRemove(useremail),
+      });
+
+    db.collection("Users")
+      .doc(useremail)
+      .update({
+        myLikes: firebase.firestore.FieldValue.arrayRemove(e.id),
+      });
+  };
+
+  const removeFavorite = (e) => {
+    db.collection("Users")
+      .doc(useremail)
+      .update({
+        favoritePost: firebase.firestore.FieldValue.arrayRemove(e.id),
+      });
+  };
+
   return (
     <>
       <div className="containerPostDetail">
@@ -219,7 +243,11 @@ const Detail = () => {
               </span>
               <span
                 className={btnFill ? "btnopen" : "btnclosed"}
-                onClick={upVotebtnPost}
+                onClick={
+                  btnFill
+                    ? upVotebtnPost
+                    : () => UnlikePost(copyofBlogsArrDetail)
+                }
               >
                 {btnFill ? <AiOutlineHeart /> : <AiFillHeart />}
               </span>
@@ -249,7 +277,11 @@ const Detail = () => {
               <button
                 className="btnFav"
                 style={{ backgroundColor: favFill ? " #67b427" : "#a5a5a5" }}
-                onClick={checkuserfavorites}
+                onClick={
+                  favFill
+                    ? () => removeFavorite(copyofBlogsArrDetail)
+                    : checkuserfavorites
+                }
               >
                 {favFill ? "In Favorites" : "Add to Favorites"}
                 <span>

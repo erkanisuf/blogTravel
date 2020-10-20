@@ -10,6 +10,7 @@
     "@tinymce/tinymce-react": "^3.6.1",
     "commentbox.io": "^2.0.0",
     "firebase": "^7.21.1",
+    "firebase-admin": "^9.2.0",
     "firebase-tools": "^8.10.0",
     "framer-motion": "^2.6.15",
     "history": "^5.0.0",

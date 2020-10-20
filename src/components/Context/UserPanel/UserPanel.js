@@ -3,19 +3,25 @@ import { BlogContext } from "../Context/BlogContext";
 import "./UserPanel.css";
 import { ImExit } from "react-icons/im";
 
-import { AiOutlineSetting} from "react-icons/ai";
+import { AiOutlineSetting } from "react-icons/ai";
 import { Link, useNavigate } from "react-router-dom";
 import { auth } from "../../../firebase/firebase";
 const UserPanel = () => {
-  const { valueOne, valueTwo, valueThree, valueFour, valueSix } = useContext(
-    BlogContext
-  );
+  const {
+    valueOne,
+    valueTwo,
+    valueThree,
+    valueFour,
+    valueSix,
+    valueEight,
+  } = useContext(BlogContext);
   const [blogs] = valueOne;
 
   const [useremail] = valueFour;
 
   const [favorites] = valueSix;
-  const noimage= require('../../../images/115-1150152_default-profile-picture-avatar-png-green.png')
+  const [toggle, setToggle] = valueEight;
+  const noimage = require("../../../images/115-1150152_default-profile-picture-avatar-png-green.png");
   const [avatar, setAvatar] = useState(null);
   const [mypostLength, setmypostLength] = useState(0);
   const [myfavLength, setmyfavLength] = useState(0);
@@ -64,27 +70,51 @@ const UserPanel = () => {
 
   return (
     <div className="userPanel">
-      
       <div className="imgLoggedAs">
-        <p>Logged as:  {useremail}</p>
-        {avatar ? <img src={avatar} alt={avatar} /> : <img src={noimage} alt={noimage} /> }
+        <p>
+          Logged as:{" "}
+          <Link
+            onClick={() => setToggle(!toggle)}
+            to={`/user/${useremail}`}
+            // state={object}
+            style={{ textDecoration: "none", color: "green" }}
+          >
+            {" "}
+            {useremail}
+          </Link>
+        </p>
+        {avatar ? (
+          <img src={avatar} alt={avatar} />
+        ) : (
+          <img src={noimage} alt={noimage} />
+        )}
       </div>
       <div className="menuUserBar">
         <Link
+          onClick={() => setToggle(!toggle)}
           style={{ textDecoration: "none", color: "black" }}
           to="userfavorites/"
         >
           <p>My Favorite Posts: {myfavLength} </p>
         </Link>
-       
-        <Link style={{ textDecoration: "none", color: "black" }} to="myposts/">
+
+        <Link
+          onClick={() => setToggle(!toggle)}
+          style={{ textDecoration: "none", color: "black" }}
+          to="myposts/"
+        >
           <p>My Posts: {mypostLength.length}</p>
         </Link>
-        <Link style={{ textDecoration: "none", color: "black" }} to="settings/">
-          <p>Settings  <AiOutlineSetting /></p>
+        <Link
+          onClick={() => setToggle(!toggle)}
+          style={{ textDecoration: "none", color: "black" }}
+          to="settings/"
+        >
+          <p>
+            Settings <AiOutlineSetting />
+          </p>
         </Link>
       </div>
-      
 
       <span
         onClick={signOut}

@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 import { BlogContext } from "../components/Context/Context/BlogContext";
 
@@ -18,10 +18,10 @@ import { BsFilePost } from "react-icons/bs";
 import UserPanel from "../components/Context/UserPanel/UserPanel";
 
 function Layout(props) {
-  const { valueTwo } = useContext(BlogContext);
+  const { valueTwo, valueEight } = useContext(BlogContext);
   const [loggedIn] = valueTwo;
 
-  const [toggle, setToggle] = useState(false);
+  const [toggle, setToggle] = valueEight;
 
   return (
     <div className="LayoutJS">
