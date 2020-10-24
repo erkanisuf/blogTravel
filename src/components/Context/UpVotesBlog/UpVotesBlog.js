@@ -92,23 +92,28 @@ const UpVotesBlog = () => {
               className="upvoteItems"
               key={index}
             >
+              <div className="userHeart">
+                <div>
+                  <FaUserAlt />
+                  {"             "}
+                  <Link
+                    to={`/user/${object.useremail}`}
+                    // state={object}
+                    style={{ textDecoration: "none", color: "black" }}
+                  >
+                    {object.useremail}
+                  </Link>
+                </div>
+                <div>
+                  <ImHeart />
+                  {object.likes.length}
+                </div>
+              </div>
               <Link
                 to={`detail/${object.id}`}
                 state={object}
                 style={{ textDecoration: "none" }}
               >
-                <div className="userHeart">
-                  <div>
-                    <FaUserAlt />
-                    {"             "}
-                    {object.name}
-                  </div>
-                  <div>
-                    <ImHeart />
-                    {object.likes.length}
-                  </div>
-                </div>
-
                 <div className="h1justtitle">
                   <h1>{object.title}</h1>
                 </div>

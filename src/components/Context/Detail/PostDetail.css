@@ -146,7 +146,7 @@
 
 @media only screen and (max-width: 768px) {
   .containerPostDetail {
-    width: 100%;
+    width: 90%;
     -ms-grid-columns: 1fr;
         grid-template-columns: 1fr;
   }
@@ -171,6 +171,11 @@
     -ms-grid-row: 2;
     grid-row: 2;
     width: 90%;
+    -ms-flex-item-align: center;
+        -ms-grid-row-align: center;
+        align-self: center;
+    -ms-grid-column-align: center;
+        justify-self: center;
   }
   .containerPostDetail .themaintext {
     -ms-grid-column: 1;

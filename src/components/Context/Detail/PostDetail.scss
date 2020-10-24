@@ -122,7 +122,7 @@ $grey: rgba(133, 133, 133, 0.5);
 
 @media only screen and (max-width: 768px) {
   .containerPostDetail {
-    width: 100%;
+    width: 90%;
 
     grid-template-columns: 1fr;
 
@@ -143,6 +143,8 @@ $grey: rgba(133, 133, 133, 0.5);
       grid-column: 1;
       grid-row: 2;
       width: 90%;
+      align-self: center;
+      justify-self: center;
     }
 
     .themaintext {

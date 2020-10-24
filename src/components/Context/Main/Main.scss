@@ -33,28 +33,49 @@ $buttonPri: orange;
     @include centerFlex(white);
     background-repeat: no-repeat;
     background-position: center;
+    width: 100%;
+    height: 100%;
 
     background-size: cover;
-    transition: all 0.5s ease-in-out;
+    transition: all 0.1s ease-in-out;
+    opacity: 1;
+    box-sizing: border-box;
     &:hover {
-      transform: scale(1.01);
+      box-shadow: 0px 0px 1px 0.1px #777676;
     }
   }
   .insides {
-    @include centerFlex(rgba(255, 249, 249, 0.815));
-
+    @include centerFlex(rgba(189, 192, 190, 0.562));
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-end;
+    height: 100%;
     line-height: 15px;
-    border-top: 1px solid black;
+    border-top: 1px solid rgba(0, 0, 0, 0.438);
+    &:hover {
+      background-color: rgba(250, 177, 21, 0.699);
+      h1 {
+        transform: scale(1.1);
+        transition: all 0.5s ease-in-out;
+      }
+    }
   }
   h1 {
-    color: black;
+    color: rgb(255, 255, 255);
     padding: 0 25px;
+    text-shadow: 2px 4px 3px rgba(0, 0, 0, 0.3);
   }
 
   h5 {
-    color: black;
+    color: rgb(255, 255, 255);
+    text-shadow: 2px 4px 3px rgba(0, 0, 0, 0.3);
     font-style: italic;
     padding: 0 25px;
+    &:hover {
+      text-decoration: underline;
+    }
   }
 
   div:nth-child(1) {
@@ -63,10 +84,12 @@ $buttonPri: orange;
     overflow: hidden;
     background-size: cover !important;
     &:hover {
-      transform: scale(1.01);
     }
     .insides {
       background-color: rgba(233, 188, 90, 0.651);
+      &:hover {
+        background-color: rgba(250, 177, 21, 0.699);
+      }
     }
   }
 }
@@ -115,8 +138,10 @@ $buttonPri: orange;
   .MainContainer {
     grid-template-columns: 1fr;
     grid-auto-rows: 200px;
+    img {
+    }
     h1 {
-      font-size: 20px;
+      font-size: 30px;
     }
     h5 {
       font-size: 12px;

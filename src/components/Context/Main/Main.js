@@ -1,4 +1,4 @@
-import React, { useContext, useState,useEffect } from "react";
+import React, { useContext, useState, useEffect } from "react";
 import { BlogContext } from "../Context/BlogContext";
 import "./Main.css";
 import { Link, Outlet } from "react-router-dom";
@@ -16,29 +16,25 @@ const Main = () => {
   // let [searchParams, setSearchParams] = useSearchParams();
 
   const addMore = () => {
-    setValue(valueCurrent =>valueCurrent + 3);
-    
+    setValue((valueCurrent) => valueCurrent + 3);
   };
 
   const ShowLess = () => {
     setValue(5);
-    
   };
-
-  
 
   useEffect(() => {
     const showMore = () => {
-      value >= blogs.length  ? setisOpen(false) : setisOpen(true);
+      value >= blogs.length ? setisOpen(false) : setisOpen(true);
     };
     const showLezz = () => {
       if (value <= blogs.length) {
         setisOpen(true);
       }
     };
-    showMore()
-    showLezz()
-  }, [value,blogs.length])
+    showMore();
+    showLezz();
+  }, [value, blogs.length]);
 
   return (
     <div>
@@ -51,29 +47,34 @@ const Main = () => {
                 backgroundImage: `url(${object.image})`,
               }}
             >
-              <div
-                className="insides"
-                // onClick={() =>
-                //   navigate(`/detail/${name.title}`, {
-                //     state: name,
-                //     search: name.title,
-                //   })
-                // }
+              <Link
+                key={object}
+                to={`detail/${object.id}`}
+                state={object}
+                style={{
+                  textDecoration: "none",
+                  width: "100%",
+                  height: "85px",
+                }}
               >
-                <Link
-                  key={object}
-                  to={`detail/${object.id}`}
-                  state={object}
-                  style={{ textDecoration: "none" }}
+                <div
+                  className="insides"
+                  // onClick={() =>
+                  //   navigate(`/detail/${name.title}`, {
+                  //     state: name,
+                  //     search: name.title,
+                  //   })
+                  // }
                 >
                   <h5>
                     <SiSuperuser />
                     {object.name}
                   </h5>
                   <h1>{object.title}</h1>
-                </Link>
-                <Outlet />
-              </div>
+
+                  <Outlet />
+                </div>
+              </Link>
             </div>
           );
         })}

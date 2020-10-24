@@ -33,7 +33,7 @@ const CreatePost = () => {
   const navigate = useNavigate();
 
   const uploadtoStorage = (file) => {
-    const storageRef = storageFB.ref(file.name);
+    const storageRef = storageFB.ref(`Post/${useremail}/${file.name}`);
     storageRef.put(file).on(
       "state_changed",
       (snap) => {

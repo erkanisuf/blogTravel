@@ -78,11 +78,13 @@
 @media only screen and (max-width: 768px) {
   .randomPosts {
     width: 80%;
+    margin-top: -120px;
     margin-left: auto;
     -ms-grid-column: 1;
     grid-column: 1;
     -ms-grid-row: 6;
-    grid-row: 6;
+    -ms-grid-row-span: 1;
+    grid-row: 6/7;
   }
 }
 /*# sourceMappingURL=RandomPost.css.map */

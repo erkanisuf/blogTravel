@@ -66,7 +66,27 @@ function Layout(props) {
                 className="mobileUser"
                 onClick={() => setToggle(!toggle)}
               >
-                {toggle ? <CgClose /> : <FaUser />}
+                {toggle ? (
+                  loggedIn ? (
+                    <CgClose />
+                  ) : (
+                    <Link
+                      to={!loggedIn && "login/"}
+                      style={{ textDecoration: "none", color: "black" }}
+                    >
+                      <FaUser />
+                    </Link>
+                  )
+                ) : loggedIn ? (
+                  <FaUser />
+                ) : (
+                  <Link
+                    to={!loggedIn && "login/"}
+                    style={{ textDecoration: "none", color: "black" }}
+                  >
+                    <FaUser />
+                  </Link>
+                )}
               </span>
             </ul>
           </nav>

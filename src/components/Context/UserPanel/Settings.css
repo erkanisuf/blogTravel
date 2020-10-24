@@ -132,7 +132,7 @@
 
 @media only screen and (max-width: 768px) {
   .theSettings {
-    width: 100%;
+    width: 90%;
     -webkit-box-pack: center;
         -ms-flex-pack: center;
             justify-content: center;
